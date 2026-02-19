@@ -1,0 +1,19 @@
+{
+    "nav": {
+        "jobs": "Find Jobs",
+        "features": "Features",
+        "categories": "Categories",
+        "how_it_works": "How it works",
+        "login": "Login",
+        "get_started": "Get Started"
+    },
+    "hero": {
+        "title": "The Right Part-Time Job, Near You",
+        "subtitle": "Discover new opportunities from top shops nationwide",
+        "search_placeholder": "Search for jobs, shops...",
+        "search_button": "Search"
+    },
+    "footer": {
+        "rights": "All rights reserved."
+    }
+}
