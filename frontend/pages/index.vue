@@ -1,7 +1,7 @@
 <template>
   <div class="relative overflow-hidden w-full">
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center text-center px-6 pb-32">
+    <section class="relative min-h-screen flex items-center justify-center text-center px-6 pt-28 pb-32">
       <!-- Background Effects -->
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-100/40 via-surface-50 to-surface-50 dark:from-primary-900/20 dark:via-surface-950 dark:to-surface-950 pointer-events-none"></div>
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary-200/20 dark:bg-primary-900/10 rounded-full blur-3xl -z-10"></div>
