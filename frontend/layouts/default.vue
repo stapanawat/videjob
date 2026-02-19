@@ -45,7 +45,7 @@
           <template v-if="isAuthenticated">
              <NuxtLink :to="localePath('/employer/post-job')" class="px-5 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white text-sm font-bold rounded-xl shadow-lg shadow-primary-500/20 hover:shadow-primary-500/40 active:scale-95 transition-all flex items-center gap-2">
               <Icon name="lucide:plus" class="w-4 h-4" />
-              Post a Job
+              {{ $t('nav.post_job') }}
             </NuxtLink>
             <div class="relative group">
               <button class="flex items-center gap-2 pl-2 pr-1 py-1 rounded-full border border-surface-200 dark:border-surface-700 hover:border-primary-500 transition-colors">
@@ -59,8 +59,8 @@
                   <div class="text-sm font-semibold text-surface-900 dark:text-white truncate">{{ user?.name }}</div>
                   <div class="text-xs text-surface-500 dark:text-surface-400 truncate">{{ user?.email }}</div>
                 </div>
-                <NuxtLink :to="localePath('/employer/dashboard')" class="block px-4 py-2 text-sm text-surface-700 dark:text-surface-200 hover:bg-surface-50 dark:hover:bg-surface-700">Dashboard</NuxtLink>
-                <button @click="logout" class="w-full text-left px-4 py-2 text-sm text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-900/20">Sign Out</button>
+                <NuxtLink :to="localePath('/employer/dashboard')" class="block px-4 py-2 text-sm text-surface-700 dark:text-surface-200 hover:bg-surface-50 dark:hover:bg-surface-700">{{ $t('nav.dashboard') }}</NuxtLink>
+                <button @click="logout" class="w-full text-left px-4 py-2 text-sm text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-900/20">{{ $t('nav.sign_out') }}</button>
               </div>
             </div>
           </template>
@@ -104,7 +104,7 @@
           
           <div class="flex flex-col gap-4 mt-4">
             <div class="flex items-center justify-between">
-              <span class="text-surface-500 dark:text-surface-400 text-sm">Language</span>
+              <span class="text-surface-500 dark:text-surface-400 text-sm">{{ $t('nav.language') }}</span>
               <LangSwitcher />
             </div>
             <template v-if="isAuthenticated">

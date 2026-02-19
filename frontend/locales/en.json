@@ -5,13 +5,88 @@
         "categories": "Categories",
         "how_it_works": "How it works",
         "login": "Login",
-        "get_started": "Get Started"
+        "get_started": "Get Started",
+        "post_job": "Post a Job",
+        "dashboard": "Dashboard",
+        "sign_out": "Sign Out",
+        "language": "Language",
+        "view_all": "View All"
     },
     "hero": {
         "title": "The Right Part-Time Job, Near You",
         "subtitle": "Discover new opportunities from top shops nationwide",
         "search_placeholder": "Search for jobs, shops...",
-        "search_button": "Search"
+        "search_button": "Search",
+        "badge": "New jobs added every hour"
+    },
+    "metrics": {
+        "users": "Active Users",
+        "companies": "Companies",
+        "success": "Success Rate"
+    },
+    "categories": {
+        "title": "Explore by Category",
+        "subtitle": "Whatever your skill, we have a place for you. Browse through our most popular job categories.",
+        "positions": "positions"
+    },
+    "features": {
+        "fast_title": "Fast & Easy Application",
+        "fast_desc": "Don't waste time filling out endless forms. Create your profile once and apply to multiple jobs with a single click. Our smart matching system ensures you see the most relevant opportunities first.",
+        "fast_item1": "1-Click Apply",
+        "fast_item2": "Real-time status updates",
+        "fast_item3": "Direct chat with employers",
+        "fast_mock_sent": "Application Sent",
+        "fast_mock_viewed": "Viewed by Employer",
+        "fast_mock_now": "Just now",
+        "fast_mock_prev": "2 mins ago",
+        "trusted_title": "Trusted & Verified",
+        "trusted_desc": "Safety is our priority. Every employer on PreJob is verified. Read authentic reviews from other employees before you accept a job offer.",
+        "trusted_button": "Learn about our verification process",
+        "trusted_badge": "Verified Employer",
+        "trusted_reviews": "Based on 128 employee reviews"
+    },
+    "cta": {
+        "title": "Ready to start your journey?",
+        "subtitle": "Join thousands of others finding flexible work that fits their lifestyle today.",
+        "create_account": "Create Free Account",
+        "no_card": "No credit card required for job seekers."
+    },
+    "jobs": {
+        "title": "Find Jobs You Love",
+        "subtitle": "Discover new opportunities from top shops nationwide",
+        "filters": "Filters",
+        "clear_filters": "Clear Filters",
+        "job_type": "Job Type",
+        "salary_range": "Salary (THB/hr)",
+        "location": "Area / Location",
+        "found": "Found",
+        "positions": "positions",
+        "sort_by": "Sort by",
+        "sort_latest": "Latest",
+        "sort_highest": "Highest Pay",
+        "sort_lowest": "Lowest Pay",
+        "no_results": "No jobs found",
+        "try_changing": "Try changing your search or filters",
+        "clear_all": "Clear All"
+    },
+    "auth": {
+        "welcome": "Welcome Back",
+        "signin_subtitle": "Sign in to manage your job applications",
+        "email_user": "Email or Username",
+        "password": "Password",
+        "forgot": "Forgot password?",
+        "signin_button": "Sign In",
+        "no_account": "Don't have an account?",
+        "create_account": "Create account",
+        "create_title": "Create Account",
+        "create_subtitle": "Join PreJob to find your next opportunity",
+        "seeker": "Job Seeker",
+        "employer": "Employer",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "Email",
+        "already_account": "Already have an account?",
+        "signin": "Sign In"
     },
     "footer": {
         "rights": "All rights reserved."

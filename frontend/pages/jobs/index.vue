@@ -2,8 +2,8 @@
   <div class="pt-24 pb-12 max-w-7xl mx-auto px-6">
     <!-- Header -->
     <div class="mb-8">
-      <h1 class="text-3xl font-bold mb-2 text-surface-900 dark:text-white">หางานที่คุณชอบ</h1>
-      <p class="text-surface-500 dark:text-surface-400">ค้นพบโอกาสใหม่ๆ จากร้านค้าชั้นนำทั่วประทศ</p>
+      <h1 class="text-3xl font-bold mb-2 text-surface-900 dark:text-white">{{ $t('jobs.title') }}</h1>
+      <p class="text-surface-500 dark:text-surface-400">{{ $t('jobs.subtitle') }}</p>
     </div>
 
     <div class="grid lg:grid-cols-4 gap-8">
@@ -13,7 +13,7 @@
         <div class="p-6 rounded-xl bg-white dark:bg-surface-800 shadow-sm border border-surface-200 dark:border-surface-700">
           <h3 class="font-semibold mb-4 flex items-center gap-2 text-surface-900 dark:text-white">
             <Icon name="lucide:briefcase" class="text-primary-600 dark:text-primary-400" />
-            ประเภทงาน
+            {{ $t('jobs.job_type') }}
           </h3>
           <div class="space-y-3">
             <label v-for="type in jobTypes" :key="type.id" class="flex items-center gap-3 cursor-pointer group">
@@ -27,7 +27,7 @@
         <div class="p-6 rounded-xl bg-white dark:bg-surface-800 shadow-sm border border-surface-200 dark:border-surface-700">
           <h3 class="font-semibold mb-4 flex items-center gap-2 text-surface-900 dark:text-white">
             <Icon name="lucide:banknote" class="text-primary-600 dark:text-primary-400" />
-            ค่าตอบแทน (บาท/ชม.)
+            {{ $t('jobs.salary_range') }}
           </h3>
           <div class="space-y-4">
             <div class="flex items-center gap-2">
@@ -36,7 +36,7 @@
               <input v-model.number="salaryMax" type="number" placeholder="Max" class="w-full bg-surface-50 dark:bg-surface-700 border-surface-200 dark:border-surface-600 rounded-lg px-3 py-2 text-sm focus:border-primary-500 focus:outline-none text-surface-900 dark:text-white placeholder:text-surface-400">
             </div>
             <button @click="salaryMin = null; salaryMax = null" class="w-full py-2 bg-surface-100 dark:bg-surface-700 hover:bg-surface-200 dark:hover:bg-surface-600 text-surface-600 dark:text-surface-300 text-sm font-medium rounded-lg transition-colors">
-              ล้างตัวกรอง
+              {{ $t('jobs.clear_filters') }}
             </button>
           </div>
         </div>
@@ -45,7 +45,7 @@
         <div class="p-6 rounded-xl bg-white dark:bg-surface-800 shadow-sm border border-surface-200 dark:border-surface-700">
           <h3 class="font-semibold mb-4 flex items-center gap-2 text-surface-900 dark:text-white">
             <Icon name="lucide:map-pin" class="text-primary-600 dark:text-primary-400" />
-            ย่าน / พื้นที่
+            {{ $t('jobs.location') }}
           </h3>
           <div class="space-y-3">
             <label v-for="area in areas" :key="area.id" class="flex items-center gap-3 cursor-pointer group">
@@ -62,24 +62,24 @@
         <div class="p-4 rounded-2xl mb-6 flex flex-col md:flex-row gap-4 bg-white dark:bg-surface-800 shadow-sm border border-surface-200 dark:border-surface-700">
           <div class="flex-1 relative">
             <Icon name="lucide:search" class="absolute left-4 top-1/2 -translate-y-1/2 text-surface-400 w-5 h-5" />
-            <input v-model="searchQuery" type="text" placeholder="ค้นหาตำแหน่งงาน, ชื่อร้าน..." 
+            <input v-model="searchQuery" type="text" :placeholder="$t('hero.search_placeholder')" 
                    class="w-full bg-surface-50 dark:bg-surface-700 border border-surface-200 dark:border-surface-600 rounded-xl pl-12 pr-4 py-3 text-surface-900 dark:text-white placeholder:text-surface-400 focus:border-primary-500 focus:outline-none transition-colors">
           </div>
           <div class="flex gap-2">
             <button @click="showMobileFilters = true" class="lg:hidden px-4 py-3 bg-surface-100 dark:bg-surface-700 hover:bg-surface-200 dark:hover:bg-surface-600 text-surface-700 dark:text-surface-300 font-semibold rounded-xl flex items-center justify-center gap-2 transition-all">
               <Icon name="lucide:filter" class="w-5 h-5" />
-              <span class="hidden sm:inline">ตัวกรอง</span>
+              <span class="hidden sm:inline">{{ $t('jobs.filters') }}</span>
             </button>
             <button @click="() => {}" class="flex-1 md:flex-none px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary-500/20">
               <Icon name="lucide:search" class="w-5 h-5" />
-              ค้นหา
+              {{ $t('hero.search_button') }}
             </button>
           </div>
         </div>
 
         <!-- Active Filters -->
         <div v-if="hasActiveFilters" class="flex flex-wrap items-center gap-2 mb-4">
-          <span class="text-sm text-surface-500 dark:text-surface-400">ตัวกรอง:</span>
+          <span class="text-sm text-surface-500 dark:text-surface-400">{{ $t('jobs.filters') }}:</span>
           <span v-for="type in selectedTypes" :key="type" 
                 class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-50 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-medium">
             {{ jobTypes.find(t => t.id === type)?.label }}
@@ -94,18 +94,18 @@
               <Icon name="lucide:x" class="w-3 h-3" />
             </button>
           </span>
-          <button @click="clearAllFilters" class="text-xs text-surface-500 dark:text-surface-400 hover:text-danger-500 underline ml-2">ล้างทั้งหมด</button>
+          <button @click="clearAllFilters" class="text-xs text-surface-500 dark:text-surface-400 hover:text-danger-500 underline ml-2">{{ $t('jobs.clear_all') }}</button>
         </div>
 
         <!-- Results Info -->
         <div class="flex items-center justify-between mb-6">
-          <span class="text-surface-500 dark:text-surface-400">พบ <span class="text-primary-600 dark:text-primary-400 font-semibold">{{ filteredJobs.length }}</span> ตำแหน่งงาน</span>
+          <span class="text-surface-500 dark:text-surface-400">{{ $t('jobs.found') }} <span class="text-primary-600 dark:text-primary-400 font-semibold">{{ filteredJobs.length }}</span> {{ $t('jobs.positions') }}</span>
           <div class="flex items-center gap-2 text-sm text-surface-500 dark:text-surface-400">
-            <span>เรียงตาม:</span>
+            <span>{{ $t('jobs.sort_by') }}:</span>
             <select v-model="sortBy" class="bg-transparent border-none text-surface-900 dark:text-white font-medium focus:ring-0 cursor-pointer">
-              <option value="latest">ล่าสุด</option>
-              <option value="highest">ค่าจ้างสูงสุด</option>
-              <option value="lowest">ค่าจ้างต่ำสุด</option>
+              <option value="latest">{{ $t('jobs.sort_latest') }}</option>
+              <option value="highest">{{ $t('jobs.sort_highest') }}</option>
+              <option value="lowest">{{ $t('jobs.sort_lowest') }}</option>
             </select>
           </div>
         </div>
@@ -114,9 +114,9 @@
         <div class="space-y-4" v-auto-animate>
           <div v-if="filteredJobs.length === 0" class="text-center py-16">
             <Icon name="lucide:search-x" class="w-16 h-16 text-surface-300 dark:text-surface-600 mx-auto mb-4" />
-            <h3 class="text-lg font-semibold text-surface-700 dark:text-surface-300 mb-2">ไม่พบตำแหน่งงาน</h3>
-            <p class="text-surface-500 dark:text-surface-400">ลองเปลี่ยนคำค้นหาหรือตัวกรอง</p>
-            <button @click="clearAllFilters" class="mt-4 px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-sm font-medium transition-colors">ล้างตัวกรอง</button>
+            <h3 class="text-lg font-semibold text-surface-700 dark:text-surface-300 mb-2">{{ $t('jobs.no_results') }}</h3>
+            <p class="text-surface-500 dark:text-surface-400">{{ $t('jobs.try_changing') }}</p>
+            <button @click="clearAllFilters" class="mt-4 px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-sm font-medium transition-colors">{{ $t('jobs.clear_filters') }}</button>
           </div>
 
           <NuxtLink v-for="job in filteredJobs" :key="job.id" :to="localePath(`/jobs/${job.id}`)"
@@ -143,7 +143,7 @@
                   </div>
                   <div class="text-right">
                     <div class="text-xl font-bold text-primary-600 dark:text-primary-400">{{ job.wage }}</div>
-                    <div class="text-xs text-surface-500 dark:text-surface-400">บาท / ชั่วโมง</div>
+                    <div class="text-xs text-surface-500 dark:text-surface-400">บาท / {{ $t('nav.language') === 'TH' ? 'ชม.' : 'hr' }}</div>
                   </div>
                 </div>
 
@@ -174,7 +174,7 @@
       <div v-if="showMobileFilters" class="fixed inset-0 z-50 lg:hidden bg-surface-50 dark:bg-surface-950 flex flex-col">
         <!-- Modal Header -->
         <div class="px-6 py-4 border-b border-surface-200 dark:border-surface-800 flex items-center justify-between bg-white dark:bg-surface-900">
-          <h2 class="text-xl font-bold text-surface-900 dark:text-white">ตัวกรองค้นหา</h2>
+          <h2 class="text-xl font-bold text-surface-900 dark:text-white">{{ $t('jobs.filters') }}</h2>
           <button @click="showMobileFilters = false" class="p-2 rounded-full hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-500 transition-colors">
             <Icon name="lucide:x" class="w-6 h-6" />
           </button>
@@ -186,7 +186,7 @@
           <div class="space-y-4">
             <h3 class="font-semibold flex items-center gap-2 text-surface-900 dark:text-white">
               <Icon name="lucide:briefcase" class="text-primary-600 dark:text-primary-400" />
-              ประเภทงาน
+              {{ $t('jobs.job_type') }}
             </h3>
             <div class="space-y-3">
               <label v-for="type in jobTypes" :key="type.id" class="flex items-center gap-3 cursor-pointer group">
@@ -202,7 +202,7 @@
           <div class="space-y-4">
             <h3 class="font-semibold flex items-center gap-2 text-surface-900 dark:text-white">
               <Icon name="lucide:banknote" class="text-primary-600 dark:text-primary-400" />
-              ค่าตอบแทน (บาท/ชม.)
+              {{ $t('jobs.salary_range') }}
             </h3>
             <div class="flex items-center gap-2">
               <input v-model.number="salaryMin" type="number" placeholder="Min" class="flex-1 bg-white dark:bg-surface-800 border-surface-200 dark:border-surface-600 rounded-xl px-4 py-3 text-base focus:border-primary-500 focus:outline-none text-surface-900 dark:text-white">
@@ -217,7 +217,7 @@
           <div class="space-y-4">
             <h3 class="font-semibold flex items-center gap-2 text-surface-900 dark:text-white">
               <Icon name="lucide:map-pin" class="text-primary-600 dark:text-primary-400" />
-              ย่าน / พื้นที่
+              {{ $t('jobs.location') }}
             </h3>
             <div class="space-y-3">
               <label v-for="area in areas" :key="area.id" class="flex items-center gap-3 cursor-pointer group">
@@ -231,10 +231,10 @@
         <!-- Footer Actions -->
         <div class="p-6 bg-white dark:bg-surface-900 border-t border-surface-200 dark:border-surface-800 flex gap-4">
           <button @click="clearAllFilters" class="flex-1 py-3 bg-surface-100 dark:bg-surface-800 text-surface-900 dark:text-white font-semibold rounded-xl text-lg hover:bg-surface-200 dark:hover:bg-surface-700 transition-colors">
-            ล้างค่า
+            {{ $t('jobs.clear_filters') }}
           </button>
           <button @click="showMobileFilters = false" class="flex-[2] py-3 bg-primary-600 text-white font-bold rounded-xl text-lg hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/20">
-            ดู {{ filteredJobs.length }} ตำแหน่ง
+            {{ $t('jobs.found') }} {{ filteredJobs.length }} {{ $t('jobs.positions') }}
           </button>
         </div>
       </div>
@@ -250,6 +250,7 @@ useSeoMeta({
 
 const route = useRoute()
 const localePath = useLocalePath()
+const { t } = useI18n()
 
 // --- Filters State ---
 const showMobileFilters = ref(false)
@@ -273,20 +274,20 @@ const clearAllFilters = () => {
 }
 
 // --- Filter Options ---
-const jobTypes = [
-  { id: 'part-time', label: 'งานพาร์ทไทม์' },
-  { id: 'full-time', label: 'งานประจำ' },
-  { id: 'event', label: 'งานอีเวนท์ / ออกบูธ' },
-  { id: 'freelance', label: 'ฟรีแลนซ์' },
-]
+const jobTypes = computed(() => [
+  { id: 'part-time', label: t('job_types.part_time') },
+  { id: 'full-time', label: t('job_types.full_time') },
+  { id: 'event', label: t('job_types.event') },
+  { id: 'freelance', label: t('job_types.freelance') },
+])
 
-const areas = [
-  { id: 'siam', label: 'สยาม / สามย่าน / จุฬา' },
-  { id: 'sukhumvit', label: 'สุขุมวิท / อโศก / ทองหล่อ' },
-  { id: 'silom', label: 'สีลม / สาทร' },
-  { id: 'ari', label: 'อารีย์ / พญาไท' },
-  { id: 'ladprao', label: 'ลาดพร้าว / จตุจักร' },
-]
+const areas = computed(() => [
+  { id: 'siam', label: t('areas.siam') },
+  { id: 'sukhumvit', label: t('areas.sukhumvit') },
+  { id: 'silom', label: t('areas.silom') },
+  { id: 'ari', label: t('areas.ari') },
+  { id: 'ladprao', label: t('areas.ladprao') },
+])
 
 // --- Jobs Data ---
 const jobs = [

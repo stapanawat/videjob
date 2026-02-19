@@ -48,19 +48,19 @@
         <!-- Metric Badges -->
         <div class="flex flex-wrap justify-center gap-4 mt-12 pt-8">
           <div class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-surface-800 rounded-lg border border-surface-100 dark:border-surface-700">
-            <Icon name="lucide:users" class="w-5 h-5 text-primary-500" />
+             <Icon name="lucide:users" class="w-5 h-5 text-primary-500" />
             <span class="font-semibold text-surface-900 dark:text-white">10k+</span>
-            <span class="text-sm text-surface-500 dark:text-surface-400">Active Users</span>
+            <span class="text-sm text-surface-500 dark:text-surface-400">{{ $t('metrics.users') }}</span>
           </div>
           <div class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-surface-800 rounded-lg border border-surface-100 dark:border-surface-700">
             <Icon name="lucide:building-2" class="w-5 h-5 text-indigo-500" />
             <span class="font-semibold text-surface-900 dark:text-white">500+</span>
-            <span class="text-sm text-surface-500 dark:text-surface-400">Companies</span>
+            <span class="text-sm text-surface-500 dark:text-surface-400">{{ $t('metrics.companies') }}</span>
           </div>
           <div class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-surface-800 rounded-lg border border-surface-100 dark:border-surface-700">
             <Icon name="lucide:check-circle" class="w-5 h-5 text-emerald-500" />
             <span class="font-semibold text-surface-900 dark:text-white">98%</span>
-            <span class="text-sm text-surface-500 dark:text-surface-400">Success Rate</span>
+            <span class="text-sm text-surface-500 dark:text-surface-400">{{ $t('metrics.success') }}</span>
           </div>
         </div>
       </div>
@@ -76,11 +76,11 @@
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
           <div class="max-w-2xl">
-            <h2 class="text-4xl font-bold mb-4 text-surface-900 dark:text-white">Explore by Category</h2>
-            <p class="text-lg text-surface-500 dark:text-surface-300">Whatever your skill, we have a place for you. Browse through our most popular job categories.</p>
+            <h2 class="text-4xl font-bold mb-4 text-surface-900 dark:text-white">{{ $t('categories.title') }}</h2>
+            <p class="text-lg text-surface-500 dark:text-surface-300">{{ $t('categories.subtitle') }}</p>
           </div>
           <NuxtLink :to="localePath('/jobs')" class="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium flex items-center gap-2 group">
-             View all categories <Icon name="lucide:arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+             {{ $t('nav.view_all') }} <Icon name="lucide:arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </NuxtLink>
         </div>
 
@@ -110,19 +110,19 @@
             <div class="w-12 h-12 rounded-2xl bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center text-primary-600 dark:text-primary-400">
               <Icon name="lucide:zap" class="w-6 h-6" />
             </div>
-            <h2 class="text-4xl font-bold text-surface-900 dark:text-white">Fast & Easy Application</h2>
+            <h2 class="text-4xl font-bold text-surface-900 dark:text-white">{{ $t('features.fast_title') }}</h2>
             <p class="text-lg text-surface-500 dark:text-surface-300 leading-relaxed">
-              Don't waste time filling out endless forms. Create your profile once and apply to multiple jobs with a single click. Our smart matching system ensures you see the most relevant opportunities first.
+              {{ $t('features.fast_desc') }}
             </p>
             <ul class="space-y-3 pt-4">
               <li class="flex items-center gap-3 text-surface-700 dark:text-surface-200">
-                <Icon name="lucide:check" class="w-5 h-5 text-emerald-500" /> 1-Click Apply
+                <Icon name="lucide:check" class="w-5 h-5 text-emerald-500" /> {{ $t('features.fast_item1') }}
               </li>
               <li class="flex items-center gap-3 text-surface-700 dark:text-surface-200">
-                <Icon name="lucide:check" class="w-5 h-5 text-emerald-500" /> Real-time status updates
+                <Icon name="lucide:check" class="w-5 h-5 text-emerald-500" /> {{ $t('features.fast_item2') }}
               </li>
               <li class="flex items-center gap-3 text-surface-700 dark:text-surface-200">
-                <Icon name="lucide:check" class="w-5 h-5 text-emerald-500" /> Direct chat with employers
+                <Icon name="lucide:check" class="w-5 h-5 text-emerald-500" /> {{ $t('features.fast_item3') }}
               </li>
             </ul>
           </div>
@@ -131,18 +131,18 @@
             <div class="p-8 rounded-3xl border border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-800 relative shadow-2xl">
                <!-- Mock UI -->
                <div class="space-y-4">
-                  <div class="flex items-center gap-4 p-3 rounded-xl bg-surface-50 dark:bg-surface-700 shadow-sm border border-surface-100 dark:border-surface-600">
+                   <div class="flex items-center gap-4 p-3 rounded-xl bg-surface-50 dark:bg-surface-700 shadow-sm border border-surface-100 dark:border-surface-600">
                     <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400"><Icon name="lucide:check" class="w-5 h-5" /></div>
                     <div>
-                      <div class="font-medium text-surface-900 dark:text-white">Application Sent</div>
-                      <div class="text-xs text-surface-500 dark:text-surface-400">Just now</div>
+                      <div class="font-medium text-surface-900 dark:text-white">{{ $t('features.fast_mock_sent') }}</div>
+                      <div class="text-xs text-surface-500 dark:text-surface-400">{{ $t('features.fast_mock_now') }}</div>
                     </div>
                   </div>
                   <div class="flex items-center gap-4 p-3 rounded-xl bg-surface-50 dark:bg-surface-700 shadow-sm border border-surface-100 dark:border-surface-600 opacity-70">
                     <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/50 flex items-center justify-center text-blue-600 dark:text-blue-400"><Icon name="lucide:eye" class="w-5 h-5" /></div>
                     <div>
-                      <div class="font-medium text-surface-900 dark:text-white">Viewed by Employer</div>
-                      <div class="text-xs text-surface-500 dark:text-surface-400">2 mins ago</div>
+                      <div class="font-medium text-surface-900 dark:text-white">{{ $t('features.fast_mock_viewed') }}</div>
+                      <div class="text-xs text-surface-500 dark:text-surface-400">{{ $t('features.fast_mock_prev') }}</div>
                     </div>
                   </div>
                </div>
@@ -156,20 +156,20 @@
             <div class="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-900/30 flex items-center justify-center text-indigo-600 dark:text-indigo-400">
               <Icon name="lucide:shield-check" class="w-6 h-6" />
             </div>
-            <h2 class="text-4xl font-bold text-surface-900 dark:text-white">Trusted & Verified</h2>
+            <h2 class="text-4xl font-bold text-surface-900 dark:text-white">{{ $t('features.trusted_title') }}</h2>
             <p class="text-lg text-surface-500 dark:text-surface-300 leading-relaxed">
-              Safety is our priority. Every employer on PreJob is verified. Read authentic reviews from other employees before you accept a job offer.
+              {{ $t('features.trusted_desc') }}
             </p>
             <button class="text-primary-600 dark:text-primary-400 font-semibold flex items-center gap-2 hover:gap-3 transition-all pt-2">
-              Learn about our verification process <Icon name="lucide:arrow-right" class="w-4 h-4" />
+              {{ $t('features.trusted_button') }} <Icon name="lucide:arrow-right" class="w-4 h-4" />
             </button>
           </div>
           <div class="flex-1 relative">
              <div class="absolute inset-0 bg-gradient-to-tl from-indigo-200 dark:from-indigo-900/30 to-transparent rounded-3xl blur-3xl opacity-30 transform -rotate-3"></div>
              <div class="p-8 rounded-3xl border border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-800 relative shadow-2xl">
                  <div class="text-center space-y-4">
-                    <div class="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 rounded-full inline-flex items-center gap-2 text-sm font-semibold">
-                      <Icon name="lucide:badge-check" class="w-4 h-4" /> Verified Employer
+                     <div class="px-4 py-2 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-700 dark:text-emerald-400 rounded-full inline-flex items-center gap-2 text-sm font-semibold">
+                      <Icon name="lucide:badge-check" class="w-4 h-4" /> {{ $t('features.trusted_badge') }}
                     </div>
                     <div class="text-5xl font-bold text-surface-900 dark:text-white">4.9/5</div>
                     <div class="flex justify-center gap-1 text-amber-400">
@@ -179,7 +179,7 @@
                       <Icon name="lucide:star" class="w-6 h-6 fill-current" />
                       <Icon name="lucide:star" class="w-6 h-6 fill-current" />
                     </div>
-                    <p class="text-sm text-surface-500 dark:text-surface-400">Based on 128 employee reviews</p>
+                    <p class="text-sm text-surface-500 dark:text-surface-400">{{ $t('features.trusted_reviews') }}</p>
                  </div>
              </div>
           </div>
@@ -192,19 +192,19 @@
       <div class="max-w-4xl mx-auto p-12 rounded-3xl border border-surface-200 dark:border-surface-700 bg-white dark:bg-surface-800 shadow-2xl relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary-400 via-primary-600 to-primary-400"></div>
         
-        <h2 class="text-4xl md:text-5xl font-bold mb-6 text-surface-900 dark:text-white">Ready to start your journey?</h2>
-        <p class="text-xl text-surface-500 dark:text-surface-300 mb-8 max-w-2xl mx-auto">Join thousands of others finding flexible work that fits their lifestyle today.</p>
+         <h2 class="text-4xl md:text-5xl font-bold mb-6 text-surface-900 dark:text-white">{{ $t('cta.title') }}</h2>
+        <p class="text-xl text-surface-500 dark:text-surface-300 mb-8 max-w-2xl mx-auto">{{ $t('cta.subtitle') }}</p>
         
         <div class="flex flex-col sm:flex-row justify-center gap-4">
           <NuxtLink :to="localePath('/register')" class="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-bold rounded-xl text-lg transition-all shadow-xl shadow-primary-500/30 hover:shadow-primary-500/50 hover:-translate-y-0.5 active:scale-95 inline-block">
-            Create Free Account
+            {{ $t('cta.create_account') }}
           </NuxtLink>
           <NuxtLink :to="localePath('/employer/post-job')" class="px-8 py-4 bg-surface-100 dark:bg-surface-700 hover:bg-surface-200 dark:hover:bg-surface-600 text-surface-700 dark:text-white font-bold rounded-xl text-lg border border-surface-200 dark:border-surface-600 transition-all inline-block">
-            Post a Job
+            {{ $t('nav.post_job') }}
           </NuxtLink>
         </div>
         
-        <p class="mt-6 text-sm text-surface-400 dark:text-surface-500">No credit card required for job seekers.</p>
+        <p class="mt-6 text-sm text-surface-400 dark:text-surface-500">{{ $t('cta.no_card') }}</p>
       </div>
     </section>
 
