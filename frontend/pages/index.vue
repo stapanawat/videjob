@@ -1,7 +1,7 @@
 <template>
   <div class="relative overflow-hidden w-full">
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center text-center px-6">
+    <section class="relative min-h-screen flex items-center justify-center text-center px-6 pb-32">
       <!-- Background Effects -->
       <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-100/40 via-surface-50 to-surface-50 dark:from-primary-900/20 dark:via-surface-950 dark:to-surface-950 pointer-events-none"></div>
       <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary-200/20 dark:bg-primary-900/10 rounded-full blur-3xl -z-10"></div>
@@ -16,7 +16,7 @@
           <span class="text-xs font-medium text-surface-600 dark:text-surface-300">New jobs added every hour</span>
         </div>
         
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-surface-900 dark:text-white leading-tight">
+        <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight text-surface-900 dark:text-white leading-tight">
           {{ $t('hero.title') }}
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-primary-400">Right Now</span>
         </h1>
@@ -38,9 +38,9 @@
                 @keyup.enter="doSearch"
               >
             </div>
-            <button @click="doSearch" class="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-all shadow-lg shadow-primary-500/20 hover:shadow-primary-600/30 active:scale-95 flex items-center gap-2">
-              <span>{{ $t('hero.search_button') }}</span>
-              <Icon name="lucide:arrow-right" class="w-4 h-4" />
+            <button @click="doSearch" class="px-4 md:px-8 py-3 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-bold rounded-xl transition-all shadow-xl shadow-primary-500/30 hover:shadow-primary-500/50 hover:-translate-y-0.5 active:scale-95 flex items-center gap-2">
+              <span class="hidden md:inline">{{ $t('hero.search_button') }}</span>
+              <Icon name="lucide:arrow-right" class="w-5 h-5" />
             </button>
           </div>
         </div>
@@ -66,7 +66,7 @@
       </div>
 
       <!-- Scroll Down Indicator -->
-      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-20 pointer-events-none">
         <Icon name="lucide:chevron-down" class="w-8 h-8 text-surface-300 dark:text-surface-600" />
       </div>
     </section>
@@ -196,12 +196,12 @@
         <p class="text-xl text-surface-500 dark:text-surface-300 mb-8 max-w-2xl mx-auto">Join thousands of others finding flexible work that fits their lifestyle today.</p>
         
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-          <button class="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl text-lg transition-all shadow-xl shadow-primary-500/20 hover:shadow-primary-600/30 active:scale-95">
+          <NuxtLink :to="localePath('/register')" class="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-500 hover:to-primary-400 text-white font-bold rounded-xl text-lg transition-all shadow-xl shadow-primary-500/30 hover:shadow-primary-500/50 hover:-translate-y-0.5 active:scale-95 inline-block">
             Create Free Account
-          </button>
-          <button class="px-8 py-4 bg-surface-100 dark:bg-surface-700 hover:bg-surface-200 dark:hover:bg-surface-600 text-surface-700 dark:text-white font-bold rounded-xl text-lg border border-surface-200 dark:border-surface-600 transition-all">
+          </NuxtLink>
+          <NuxtLink :to="localePath('/employer/post-job')" class="px-8 py-4 bg-surface-100 dark:bg-surface-700 hover:bg-surface-200 dark:hover:bg-surface-600 text-surface-700 dark:text-white font-bold rounded-xl text-lg border border-surface-200 dark:border-surface-600 transition-all inline-block">
             Post a Job
-          </button>
+          </NuxtLink>
         </div>
         
         <p class="mt-6 text-sm text-surface-400 dark:text-surface-500">No credit card required for job seekers.</p>

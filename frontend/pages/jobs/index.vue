@@ -7,8 +7,8 @@
     </div>
 
     <div class="grid lg:grid-cols-4 gap-8">
-      <!-- Filters Sidebar -->
-      <aside class="hidden lg:block space-y-8">
+      <!-- Filters Sidebar (Desktop) -->
+      <aside class="hidden lg:block space-y-8 sticky top-24 h-fit">
         <!-- Job Type Filter -->
         <div class="p-6 rounded-xl bg-white dark:bg-surface-800 shadow-sm border border-surface-200 dark:border-surface-700">
           <h3 class="font-semibold mb-4 flex items-center gap-2 text-surface-900 dark:text-white">
@@ -65,10 +65,16 @@
             <input v-model="searchQuery" type="text" placeholder="ค้นหาตำแหน่งงาน, ชื่อร้าน..." 
                    class="w-full bg-surface-50 dark:bg-surface-700 border border-surface-200 dark:border-surface-600 rounded-xl pl-12 pr-4 py-3 text-surface-900 dark:text-white placeholder:text-surface-400 focus:border-primary-500 focus:outline-none transition-colors">
           </div>
-          <button @click="() => {}" class="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary-500/20">
-            <Icon name="lucide:search" class="w-5 h-5" />
-            ค้นหา
-          </button>
+          <div class="flex gap-2">
+            <button @click="showMobileFilters = true" class="lg:hidden px-4 py-3 bg-surface-100 dark:bg-surface-700 hover:bg-surface-200 dark:hover:bg-surface-600 text-surface-700 dark:text-surface-300 font-semibold rounded-xl flex items-center justify-center gap-2 transition-all">
+              <Icon name="lucide:filter" class="w-5 h-5" />
+              <span class="hidden sm:inline">ตัวกรอง</span>
+            </button>
+            <button @click="() => {}" class="flex-1 md:flex-none px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary-500/20">
+              <Icon name="lucide:search" class="w-5 h-5" />
+              ค้นหา
+            </button>
+          </div>
         </div>
 
         <!-- Active Filters -->
@@ -113,8 +119,8 @@
             <button @click="clearAllFilters" class="mt-4 px-6 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-sm font-medium transition-colors">ล้างตัวกรอง</button>
           </div>
 
-          <div v-for="job in filteredJobs" :key="job.id" 
-               class="hover:border-primary-300 dark:hover:border-primary-700 p-6 rounded-2xl group transition-all cursor-pointer bg-white dark:bg-surface-800 shadow-sm hover:shadow-md border border-surface-200 dark:border-surface-700">
+          <NuxtLink v-for="job in filteredJobs" :key="job.id" :to="localePath(`/jobs/${job.id}`)"
+               class="block hover:border-primary-300 dark:hover:border-primary-700 p-6 rounded-2xl group transition-all cursor-pointer bg-white dark:bg-surface-800 shadow-sm hover:shadow-md border border-surface-200 dark:border-surface-700">
             <div class="flex flex-col sm:flex-row gap-6">
               <!-- Shop Logo -->
               <div class="w-16 h-16 rounded-xl bg-surface-50 dark:bg-surface-700 flex-shrink-0 flex items-center justify-center overflow-hidden border border-surface-200 dark:border-surface-600">
@@ -150,11 +156,89 @@
                 </div>
               </div>
             </div>
-          </div>
+          </NuxtLink>
         </div>
 
       </main>
     </div>
+
+    <!-- Mobile Filter Modal -->
+    <Transition
+      enter-active-class="transition duration-300 ease-out"
+      enter-from-class="translate-y-full opacity-0"
+      enter-to-class="translate-y-0 opacity-100"
+      leave-active-class="transition duration-200 ease-in"
+      leave-from-class="translate-y-0 opacity-100"
+      leave-to-class="translate-y-full opacity-0"
+    >
+      <div v-if="showMobileFilters" class="fixed inset-0 z-50 lg:hidden bg-surface-50 dark:bg-surface-950 flex flex-col">
+        <!-- Modal Header -->
+        <div class="px-6 py-4 border-b border-surface-200 dark:border-surface-800 flex items-center justify-between bg-white dark:bg-surface-900">
+          <h2 class="text-xl font-bold text-surface-900 dark:text-white">ตัวกรองค้นหา</h2>
+          <button @click="showMobileFilters = false" class="p-2 rounded-full hover:bg-surface-100 dark:hover:bg-surface-800 text-surface-500 transition-colors">
+            <Icon name="lucide:x" class="w-6 h-6" />
+          </button>
+        </div>
+
+        <!-- Scrollable Content -->
+        <div class="flex-1 overflow-y-auto p-6 space-y-8">
+          <!-- Job Type Filter -->
+          <div class="space-y-4">
+            <h3 class="font-semibold flex items-center gap-2 text-surface-900 dark:text-white">
+              <Icon name="lucide:briefcase" class="text-primary-600 dark:text-primary-400" />
+              ประเภทงาน
+            </h3>
+            <div class="space-y-3">
+              <label v-for="type in jobTypes" :key="type.id" class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" v-model="selectedTypes" :value="type.id" class="w-5 h-5 rounded border-surface-300 dark:border-surface-600 bg-white dark:bg-surface-700 text-primary-600 focus:ring-primary-500">
+                <span class="text-base text-surface-600 dark:text-surface-300">{{ type.label }}</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="w-full h-px bg-surface-200 dark:bg-surface-800"></div>
+
+          <!-- Salary Range -->
+          <div class="space-y-4">
+            <h3 class="font-semibold flex items-center gap-2 text-surface-900 dark:text-white">
+              <Icon name="lucide:banknote" class="text-primary-600 dark:text-primary-400" />
+              ค่าตอบแทน (บาท/ชม.)
+            </h3>
+            <div class="flex items-center gap-2">
+              <input v-model.number="salaryMin" type="number" placeholder="Min" class="flex-1 bg-white dark:bg-surface-800 border-surface-200 dark:border-surface-600 rounded-xl px-4 py-3 text-base focus:border-primary-500 focus:outline-none text-surface-900 dark:text-white">
+              <span class="text-surface-500 dark:text-surface-400">-</span>
+              <input v-model.number="salaryMax" type="number" placeholder="Max" class="flex-1 bg-white dark:bg-surface-800 border-surface-200 dark:border-surface-600 rounded-xl px-4 py-3 text-base focus:border-primary-500 focus:outline-none text-surface-900 dark:text-white">
+            </div>
+          </div>
+
+          <div class="w-full h-px bg-surface-200 dark:bg-surface-800"></div>
+
+          <!-- Location -->
+          <div class="space-y-4">
+            <h3 class="font-semibold flex items-center gap-2 text-surface-900 dark:text-white">
+              <Icon name="lucide:map-pin" class="text-primary-600 dark:text-primary-400" />
+              ย่าน / พื้นที่
+            </h3>
+            <div class="space-y-3">
+              <label v-for="area in areas" :key="area.id" class="flex items-center gap-3 cursor-pointer group">
+                <input type="checkbox" v-model="selectedAreas" :value="area.id" class="w-5 h-5 rounded border-surface-300 dark:border-surface-600 bg-white dark:bg-surface-700 text-primary-600 focus:ring-primary-500">
+                <span class="text-base text-surface-600 dark:text-surface-300">{{ area.label }}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="p-6 bg-white dark:bg-surface-900 border-t border-surface-200 dark:border-surface-800 flex gap-4">
+          <button @click="clearAllFilters" class="flex-1 py-3 bg-surface-100 dark:bg-surface-800 text-surface-900 dark:text-white font-semibold rounded-xl text-lg hover:bg-surface-200 dark:hover:bg-surface-700 transition-colors">
+            ล้างค่า
+          </button>
+          <button @click="showMobileFilters = false" class="flex-[2] py-3 bg-primary-600 text-white font-bold rounded-xl text-lg hover:bg-primary-700 transition-colors shadow-lg shadow-primary-500/20">
+            ดู {{ filteredJobs.length }} ตำแหน่ง
+          </button>
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
@@ -165,8 +249,10 @@ useSeoMeta({
 })
 
 const route = useRoute()
+const localePath = useLocalePath()
 
 // --- Filters State ---
+const showMobileFilters = ref(false)
 const searchQuery = ref((route.query.q as string) || '')
 const selectedTypes = ref<string[]>([])
 const selectedAreas = ref<string[]>([])
