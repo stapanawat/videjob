@@ -98,37 +98,40 @@
         </div>
 
         <!-- Results Info & View Toggle -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-          <span class="text-surface-500 dark:text-surface-400">{{ $t('jobs.found') }} <span class="text-primary-600 dark:text-primary-400 font-semibold">{{ filteredJobs.length }}</span> {{ $t('jobs.positions') }}</span>
+        <div class="bg-surface-50 dark:bg-surface-900/40 rounded-2xl p-4 mb-6 border border-surface-100 dark:border-surface-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <span class="text-surface-600 dark:text-surface-300 font-medium">{{ $t('jobs.found') }} <span class="text-primary-600 dark:text-primary-400 font-bold">{{ filteredJobs.length }}</span> {{ $t('jobs.positions') }}</span>
           
-          <div class="flex items-center gap-4">
+          <div class="flex items-center justify-between sm:justify-end gap-4 w-full sm:w-auto">
             <!-- View Toggle -->
-            <div class="hidden sm:flex items-center gap-1 p-1 bg-surface-100 dark:bg-surface-800 rounded-lg border border-surface-200 dark:border-surface-700">
+            <div class="hidden sm:flex items-center gap-1 p-1 bg-white dark:bg-surface-800 rounded-lg border border-surface-200 dark:border-surface-700 shadow-sm">
                <button @click="viewMode = 'list'" 
-                       :class="['p-1.5 rounded-md transition-all', viewMode === 'list' ? 'bg-white dark:bg-surface-700 text-primary-600 dark:text-primary-400 shadow-sm' : 'text-surface-500 hover:text-surface-700']">
+                       :class="['p-1.5 rounded-md transition-all', viewMode === 'list' ? 'bg-surface-100 dark:bg-surface-700 text-primary-600 dark:text-primary-400' : 'text-surface-400 hover:text-surface-600 dark:hover:text-surface-300']">
                  <Icon name="lucide:list" class="w-5 h-5" />
                </button>
                <button @click="viewMode = 'grid'" 
-                       :class="['p-1.5 rounded-md transition-all', viewMode === 'grid' ? 'bg-white dark:bg-surface-700 text-primary-600 dark:text-primary-400 shadow-sm' : 'text-surface-500 hover:text-surface-700']">
+                       :class="['p-1.5 rounded-md transition-all', viewMode === 'grid' ? 'bg-surface-100 dark:bg-surface-700 text-primary-600 dark:text-primary-400' : 'text-surface-400 hover:text-surface-600 dark:hover:text-surface-300']">
                  <Icon name="lucide:layout-grid" class="w-5 h-5" />
                </button>
             </div>
 
-            <div class="w-px h-6 bg-surface-200 dark:bg-surface-700 hidden sm:block"></div>
+            <div class="hidden sm:block w-px h-6 bg-surface-200 dark:bg-surface-700"></div>
 
-            <div class="flex items-center gap-2 text-sm text-surface-500 dark:text-surface-400">
-              <span class="whitespace-nowrap">{{ $t('jobs.sort_by') }}:</span>
-              <select v-model="sortBy" class="bg-transparent border-none text-surface-900 dark:text-white font-medium focus:ring-0 cursor-pointer py-0 pl-2 pr-8">
-                <option value="latest">{{ $t('jobs.sort_latest') }}</option>
-                <option value="highest">{{ $t('jobs.sort_highest') }}</option>
-                <option value="lowest">{{ $t('jobs.sort_lowest') }}</option>
-              </select>
+            <div class="flex items-center gap-2">
+              <span class="text-sm text-surface-500 dark:text-surface-400 whitespace-nowrap hidden xs:inline">{{ $t('jobs.sort_by') }}:</span>
+              <div class="relative group">
+                <select v-model="sortBy" class="appearance-none bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 text-surface-700 dark:text-surface-200 text-sm font-medium rounded-lg pl-3 pr-8 py-2 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all cursor-pointer">
+                  <option value="latest" class="bg-white dark:bg-surface-800">{{ $t('jobs.sort_latest') }}</option>
+                  <option value="highest" class="bg-white dark:bg-surface-800">{{ $t('jobs.sort_highest') }}</option>
+                  <option value="lowest" class="bg-white dark:bg-surface-800">{{ $t('jobs.sort_lowest') }}</option>
+                </select>
+                <Icon name="lucide:chevron-down" class="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-surface-400 pointer-events-none group-hover:text-primary-500 transition-colors" />
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Job List -->
-        <div :class="viewMode === 'list' ? 'space-y-4' : 'grid grid-cols-1 md:grid-cols-2 gap-4'" v-auto-animate>
+        <div :class="viewMode === 'list' ? 'space-y-0 sm:space-y-4 divide-y divide-surface-200 dark:divide-surface-800 sm:divide-none' : 'grid grid-cols-1 md:grid-cols-2 gap-4'" v-auto-animate>
           <div v-if="filteredJobs.length === 0" class="col-span-full text-center py-16">
             <Icon name="lucide:search-x" class="w-16 h-16 text-surface-300 dark:text-surface-600 mx-auto mb-4" />
             <h3 class="text-lg font-semibold text-surface-700 dark:text-surface-300 mb-2">{{ $t('jobs.no_results') }}</h3>
@@ -138,28 +141,28 @@
 
           <NuxtLink v-for="job in filteredJobs" :key="job.id" :to="localePath(`/jobs/${job.id}`)"
                :class="[
-                 'group relative block transition-all duration-300 overflow-hidden cursor-pointer bg-white dark:bg-surface-800 rounded-3xl border border-surface-200 dark:border-surface-700',
+                 'group relative block transition-all duration-300 overflow-hidden cursor-pointer',
                  viewMode === 'list' 
-                   ? 'p-6 shadow-sm hover:shadow-xl hover:-translate-y-1' 
-                   : 'p-7 hover:border-primary-500/50 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2'
+                   ? 'bg-transparent p-4 sm:bg-white sm:dark:bg-surface-800 sm:rounded-3xl sm:border sm:border-surface-200 sm:dark:border-surface-700 sm:p-6 sm:shadow-sm sm:hover:shadow-xl sm:hover:-translate-y-1' 
+                   : 'bg-white dark:bg-surface-800 rounded-3xl border border-surface-200 dark:border-surface-700 p-7 hover:border-primary-500/50 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2'
                ]">
              
             <!-- Hover Gradient (Grid Only) -->
             <div v-if="viewMode === 'grid'" class="absolute inset-0 bg-gradient-to-br from-primary-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
             <!-- LIST VIEW LAYOUT -->
-            <div v-if="viewMode === 'list'" class="relative z-10 flex flex-col sm:flex-row gap-6">
+            <div v-if="viewMode === 'list'" class="relative z-10 flex flex-row gap-4 sm:gap-6">
                <!-- Hover Gradient (List) -->
                <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10"></div>
                
               <!-- Shop Logo -->
-              <div class="w-16 h-16 rounded-2xl bg-surface-50 dark:bg-surface-700 flex-shrink-0 flex items-center justify-center overflow-hidden border border-surface-100 dark:border-surface-600 shadow-inner group-hover:scale-105 transition-transform">
-                <Icon :name="job.logo" class="w-8 h-8 text-surface-400 dark:text-surface-300" />
+              <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-surface-50 dark:bg-surface-700 flex-shrink-0 flex items-center justify-center overflow-hidden border border-surface-100 dark:border-surface-600 shadow-inner group-hover:scale-105 transition-transform">
+                <Icon :name="job.logo" class="w-6 h-6 sm:w-8 sm:h-8 text-surface-400 dark:text-surface-300" />
               </div>
 
               <!-- Job Details -->
               <div class="flex-1 min-w-0">
-                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-2">
+                <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-4 mb-2">
                   <div>
                     <h3 class="text-xl font-bold text-surface-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 truncate">{{ job.title }}</h3>
                     <div class="flex items-center gap-3 text-surface-500 dark:text-surface-400 text-sm flex-wrap">
@@ -335,7 +338,7 @@ const { t } = useI18n()
 
 // --- Filters State ---
 const showMobileFilters = ref(false)
-const viewMode = ref<'list' | 'grid'>('list')
+const viewMode = ref<'list' | 'grid'>('grid')
 const searchQuery = ref((route.query.q as string) || '')
 const selectedTypes = ref<string[]>([])
 const selectedAreas = ref<string[]>([])
