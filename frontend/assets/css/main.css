@@ -50,25 +50,25 @@
 
 /* ===== Color Palette (same in both modes — Tailwind dark: classes handle switching) ===== */
 :root {
-    /* Primary - Blue */
-    --color-primary-50: #eff6ff;
-    --color-primary-100: #dbeafe;
-    --color-primary-200: #bfdbfe;
-    --color-primary-300: #93bbfd;
-    --color-primary-400: #60a5fa;
-    --color-primary-500: #3b82f6;
-    --color-primary-600: #2563eb;
-    --color-primary-700: #1d4ed8;
-    --color-primary-800: #1e40af;
-    --color-primary-900: #1e3a8a;
-    --color-primary-950: #172554;
+    /* Primary - Premium Indigo */
+    --color-primary-50: #eef2ff;
+    --color-primary-100: #e0e7ff;
+    --color-primary-200: #c7d2fe;
+    --color-primary-300: #a5b4fc;
+    --color-primary-400: #818cf8;
+    --color-primary-500: #6366f1;
+    --color-primary-600: #4f46e5;
+    --color-primary-700: #4338ca;
+    --color-primary-800: #3730a3;
+    --color-primary-900: #312e81;
+    --color-primary-950: #1e1b4b;
 
-    /* Accent - Violet */
-    --color-accent-400: #a78bfa;
-    --color-accent-500: #8b5cf6;
-    --color-accent-600: #7c3aed;
+    /* Accent - Emerald (for success/action) */
+    --color-accent-400: #34d399;
+    --color-accent-500: #10b981;
+    --color-accent-600: #059669;
 
-    /* Surface - Slate (50=lightest, 950=darkest, always) */
+    /* Surface - Cool Slate with a hint of blue */
     --color-surface-50: #f8fafc;
     --color-surface-100: #f1f5f9;
     --color-surface-200: #e2e8f0;
@@ -84,7 +84,7 @@
     /* Semantic */
     --color-success-500: #10b981;
     --color-warning-500: #f59e0b;
-    --color-danger-500: #ef4444;
+    --color-danger-500: #f43f5e;
 }
 
 /* NO :root.dark overrides — Tailwind dark: classes handle all switching */

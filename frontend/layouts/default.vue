@@ -1,22 +1,24 @@
 <template>
   <div class="min-h-screen bg-surface-50 dark:bg-surface-950 bg-grid-pattern text-surface-900 dark:text-surface-100 font-sans selection:bg-primary-500/30 selection:text-primary-700 relative overflow-hidden">
-    <!-- Decorative Background Blobs -->
+    <!-- Decorative Background - Sophisticated Ambient Glow -->
     <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-      <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary-200/40 dark:bg-primary-900/20 rounded-full blur-3xl opacity-60"></div>
-      <div class="absolute top-[20%] right-[-5%] w-[400px] h-[400px] bg-accent-200/40 dark:bg-accent-600/10 rounded-full blur-3xl opacity-60"></div>
-      <div class="absolute bottom-[-10%] left-[20%] w-[600px] h-[600px] bg-emerald-100/40 dark:bg-emerald-900/10 rounded-full blur-3xl opacity-50"></div>
+      <div class="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-primary-900/10 dark:bg-primary-900/20 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen opacity-60 animate-pulse-slow"></div>
+      <div class="absolute top-[10%] right-[-10%] w-[600px] h-[600px] bg-accent-400/10 dark:bg-accent-900/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen opacity-50"></div>
+      <div class="absolute bottom-[-20%] left-[10%] w-[900px] h-[900px] bg-indigo-200/20 dark:bg-indigo-950/30 rounded-full blur-[130px] opacity-40"></div>
+      <!-- Noise Texture Overlay -->
+      <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
     </div>
 
     <NuxtRouteAnnouncer />
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 inset-x-0 z-50 glass border-b border-surface-200/40 dark:border-surface-700/40 transition-all duration-300">
-      <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <!-- Navbar - Premium Glass -->
+    <nav class="fixed top-0 inset-x-0 z-50 bg-white/70 dark:bg-surface-900/70 backdrop-blur-xl border-b border-white/20 dark:border-white/5 transition-all duration-300 supports-[backdrop-filter]:bg-white/60">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <NuxtLink :to="localePath('/')" class="flex items-center gap-3 group z-50 relative">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-primary-700 flex items-center justify-center shadow-lg shadow-primary-500/20 group-hover:scale-105 transition-transform">
-            <Icon name="lucide:briefcase" class="text-white w-6 h-6" />
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center shadow-lg shadow-primary-900/20 group-hover:scale-105 transition-transform duration-300 ring-1 ring-white/20">
+            <Icon name="lucide:briefcase" class="text-white w-5 h-5" />
           </div>
-          <span class="text-xl font-bold tracking-tight text-surface-900 dark:text-white group-hover:text-primary-600 transition-colors">PreJob</span>
+          <span class="text-xl font-bold tracking-tight text-surface-900 dark:text-white group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">PreJob</span>
         </NuxtLink>
 
         <!-- Desktop Menu -->
@@ -174,15 +176,17 @@ const localePath = useLocalePath()
 const route = useRoute()
 
 const navLinks = [
+  { href: '/', label: 'nav.home', route: true },
   { href: '/jobs', label: 'nav.jobs', route: true },
-  { href: '/#features', label: 'nav.features', route: false },
-  { href: '/#categories', label: 'nav.categories', route: false },
-  { href: '/#how-it-works', label: 'nav.how_it_works', route: false },
+  { href: '/contact', label: 'nav.contact', route: true },
 ]
 
 const isActive = (href: string) => {
   if (href.startsWith('/#')) {
     return route.path === '/' && route.hash === href.substring(1)
+  }
+  if (href === '/') {
+    return route.path === '/'
   }
   return route.path.startsWith(href)
 }

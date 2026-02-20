@@ -1,17 +1,193 @@
 {
     "nav": {
         "jobs": "Find Jobs",
+        "home": "Home",
+        "contact": "Contact Me",
         "features": "Features",
         "categories": "Categories",
         "how_it_works": "How it works",
         "login": "Login",
-        "get_started": "Get Started"
+        "get_started": "Get Started",
+        "post_job": "Post a Job",
+        "dashboard": "Dashboard",
+        "sign_out": "Sign Out",
+        "language": "Language",
+        "view_all": "View All"
+    },
+    "contact": {
+        "title": "Contact Us",
+        "subtitle": "Have questions? Our team is always ready to help.",
+        "form_title": "Send us a message",
+        "form_name": "Full Name",
+        "form_email": "Email Address",
+        "form_subject": "Subject",
+        "form_message": "Message",
+        "send_message": "Send Message",
+        "info_title": "Contact Information",
+        "info_subtitle": "Other ways to reach us",
+        "email": "Email",
+        "phone": "Phone",
+        "line": "Line ID",
+        "address": "Address",
+        "success_message": "Message sent successfully",
+        "sending": "Sending...",
+        "subjects": {
+            "general": "General Inquiry",
+            "support": "Technical Support",
+            "business": "Business Partnership",
+            "other": "Other"
+        }
     },
     "hero": {
-        "title": "The Right Part-Time Job, Near You",
-        "subtitle": "Discover new opportunities from top shops nationwide",
+        "title": "Urgent Jobs from Top Companies! <span class=\"text-primary-600\">Recommended Jobs</span> & Internships",
+        "subtitle": "Update hot jobs from top companies, all jobs, about us, latest open jobs!",
         "search_placeholder": "Search for jobs, shops...",
-        "search_button": "Search"
+        "search_button": "Search",
+        "badge": "New jobs added every hour",
+        "title_accent": ""
+    },
+    "stats": {
+        "internship": {
+            "count": "2,371",
+            "title": "Internships",
+            "desc": "Internships near me, paid internships"
+        },
+        "fulltime": {
+            "count": "6,671",
+            "title": "Full Time",
+            "desc": "Office jobs, Work from home"
+        },
+        "parttime": {
+            "count": "245",
+            "title": "Part Time",
+            "desc": "Part time, extra income"
+        },
+        "contract": {
+            "count": "306",
+            "title": "Contract",
+            "desc": "Contract jobs"
+        }
+    },
+    "about": {
+        "title": "About Us",
+        "desc_1": "PreJob is a free job posting platform that connects interns with suitable internship opportunities using AI technology for precise matching, ensuring the most effective job and candidate search.",
+        "desc_2": "We also have jobs for new graduates, jobs that welcome new graduates, full-time jobs for experienced professionals, or part-time jobs from many leading companies throughout every province in Thailand.",
+        "badge_agency": "JOB AGENCY",
+        "badge_student": "INTERN STUDENT",
+        "stats_title": "Latest Open Positions!"
+    },
+    "recommended": {
+        "title": "Recommended Jobs & Internships",
+        "subtitle": "Update hot jobs from top companies",
+        "view_all": "All Jobs",
+        "labels": {
+            "category": "Category",
+            "positions": "Openings",
+            "salary": "Salary",
+            "allowance": "Allowance",
+            "baht": "THB",
+            "positions_unit": "positions"
+        },
+        "tags": {
+            "fulltime": "Full Time",
+            "internship": "Internship",
+            "online_interview": "Online Interview",
+            "new_grad": "New Grads Welcome",
+            "urgent": "Urgent"
+        }
+    },
+    "metrics": {
+        "users": "Active Users",
+        "companies": "Companies",
+        "success": "Success Rate",
+        "user_count": "10k+",
+        "company_count": "500+",
+        "success_rate": "98%"
+    },
+    "categories": {
+        "title": "Explore by Category",
+        "subtitle": "Whatever your skill, we have a place for you. Browse through our most popular job categories.",
+        "positions": "positions"
+    },
+    "features": {
+        "fast_title": "Fast & Easy Application",
+        "fast_desc": "Don't waste time filling out endless forms. Create your profile once and apply to multiple jobs with a single click. Our smart matching system ensures you see the most relevant opportunities first.",
+        "fast_item1": "1-Click Apply",
+        "fast_item2": "Real-time status updates",
+        "fast_item3": "Direct chat with employers",
+        "fast_mock_sent": "Application Sent",
+        "fast_mock_viewed": "Viewed by Employer",
+        "fast_mock_now": "Just now",
+        "fast_mock_prev": "2 mins ago",
+        "trusted_title": "Trusted & Verified",
+        "trusted_desc": "Safety is our priority. Every employer on PreJob is verified. Read authentic reviews from other employees before you accept a job offer.",
+        "trusted_button": "Learn about our verification process",
+        "trusted_badge": "Verified Employer",
+        "trusted_reviews": "Based on 128 employee reviews"
+    },
+    "cta": {
+        "candidate": {
+            "title": "Ready for a new start?",
+            "subtitle": "Build your online resume and let AI find the perfect job.",
+            "button": "Create Free Profile",
+            "benefit": "Easy Apply • Fast Result • 100% Secure"
+        },
+        "employer": {
+            "title": "Hiring Top Talent?",
+            "subtitle": "Post jobs for free and reach thousands of candidates instantly.",
+            "button": "Post a Job Now",
+            "benefit": "Smart Screening • No Fees"
+        }
+    },
+    "jobs": {
+        "title": "Find Jobs You Love",
+        "subtitle": "Discover new opportunities from top shops nationwide",
+        "filters": "Filters",
+        "clear_filters": "Clear Filters",
+        "job_type": "Job Type",
+        "salary_range": "Salary (THB/hr)",
+        "location": "Area / Location",
+        "found": "Found",
+        "positions": "positions",
+        "sort_by": "Sort by",
+        "sort_latest": "Latest",
+        "sort_highest": "Highest Pay",
+        "sort_lowest": "Lowest Pay",
+        "no_results": "No jobs found",
+        "try_changing": "Try changing your search or filters",
+        "clear_all": "Clear All"
+    },
+    "auth": {
+        "welcome": "Welcome Back",
+        "signin_subtitle": "Sign in to manage your job applications",
+        "email_user": "Email or Username",
+        "password": "Password",
+        "forgot": "Forgot password?",
+        "signin_button": "Sign In",
+        "no_account": "Don't have an account?",
+        "create_account": "Create account",
+        "create_title": "Create Account",
+        "create_subtitle": "Join PreJob to find your next opportunity",
+        "seeker": "Job Seeker",
+        "employer": "Employer",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "Email",
+        "already_account": "Already have an account?",
+        "signin": "Sign In"
+    },
+    "job_types": {
+        "part_time": "Part Time",
+        "full_time": "Full Time",
+        "event": "Event",
+        "freelance": "Freelance"
+    },
+    "areas": {
+        "siam": "Siam",
+        "sukhumvit": "Sukhumvit",
+        "silom": "Silom",
+        "ari": "Ari",
+        "ladprao": "Ladprao"
     },
     "footer": {
         "rights": "All rights reserved."

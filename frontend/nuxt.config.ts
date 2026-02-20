@@ -2,6 +2,10 @@
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
+  // Debug log
+  hooks: {
+    'ready': () => { console.log('Nuxt Config Loaded! LangDir: locales') }
+  },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   ssr: false,
@@ -34,7 +38,10 @@ export default defineNuxtConfig({
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
-      redirectOn: 'root',  // recommended
+      redirectOn: 'root',
+    },
+    compilation: {
+      strictMessage: false,
     }
   },
 

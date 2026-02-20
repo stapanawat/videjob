@@ -97,22 +97,39 @@
           <button @click="clearAllFilters" class="text-xs text-surface-500 dark:text-surface-400 hover:text-danger-500 underline ml-2">{{ $t('jobs.clear_all') }}</button>
         </div>
 
-        <!-- Results Info -->
-        <div class="flex items-center justify-between mb-6">
+        <!-- Results Info & View Toggle -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <span class="text-surface-500 dark:text-surface-400">{{ $t('jobs.found') }} <span class="text-primary-600 dark:text-primary-400 font-semibold">{{ filteredJobs.length }}</span> {{ $t('jobs.positions') }}</span>
-          <div class="flex items-center gap-2 text-sm text-surface-500 dark:text-surface-400">
-            <span>{{ $t('jobs.sort_by') }}:</span>
-            <select v-model="sortBy" class="bg-transparent border-none text-surface-900 dark:text-white font-medium focus:ring-0 cursor-pointer">
-              <option value="latest">{{ $t('jobs.sort_latest') }}</option>
-              <option value="highest">{{ $t('jobs.sort_highest') }}</option>
-              <option value="lowest">{{ $t('jobs.sort_lowest') }}</option>
-            </select>
+          
+          <div class="flex items-center gap-4">
+            <!-- View Toggle -->
+            <div class="hidden sm:flex items-center gap-1 p-1 bg-surface-100 dark:bg-surface-800 rounded-lg border border-surface-200 dark:border-surface-700">
+               <button @click="viewMode = 'list'" 
+                       :class="['p-1.5 rounded-md transition-all', viewMode === 'list' ? 'bg-white dark:bg-surface-700 text-primary-600 dark:text-primary-400 shadow-sm' : 'text-surface-500 hover:text-surface-700']">
+                 <Icon name="lucide:list" class="w-5 h-5" />
+               </button>
+               <button @click="viewMode = 'grid'" 
+                       :class="['p-1.5 rounded-md transition-all', viewMode === 'grid' ? 'bg-white dark:bg-surface-700 text-primary-600 dark:text-primary-400 shadow-sm' : 'text-surface-500 hover:text-surface-700']">
+                 <Icon name="lucide:layout-grid" class="w-5 h-5" />
+               </button>
+            </div>
+
+            <div class="w-px h-6 bg-surface-200 dark:bg-surface-700 hidden sm:block"></div>
+
+            <div class="flex items-center gap-2 text-sm text-surface-500 dark:text-surface-400">
+              <span class="whitespace-nowrap">{{ $t('jobs.sort_by') }}:</span>
+              <select v-model="sortBy" class="bg-transparent border-none text-surface-900 dark:text-white font-medium focus:ring-0 cursor-pointer py-0 pl-2 pr-8">
+                <option value="latest">{{ $t('jobs.sort_latest') }}</option>
+                <option value="highest">{{ $t('jobs.sort_highest') }}</option>
+                <option value="lowest">{{ $t('jobs.sort_lowest') }}</option>
+              </select>
+            </div>
           </div>
         </div>
 
         <!-- Job List -->
-        <div class="space-y-4" v-auto-animate>
-          <div v-if="filteredJobs.length === 0" class="text-center py-16">
+        <div :class="viewMode === 'list' ? 'space-y-4' : 'grid grid-cols-1 md:grid-cols-2 gap-4'" v-auto-animate>
+          <div v-if="filteredJobs.length === 0" class="col-span-full text-center py-16">
             <Icon name="lucide:search-x" class="w-16 h-16 text-surface-300 dark:text-surface-600 mx-auto mb-4" />
             <h3 class="text-lg font-semibold text-surface-700 dark:text-surface-300 mb-2">{{ $t('jobs.no_results') }}</h3>
             <p class="text-surface-500 dark:text-surface-400">{{ $t('jobs.try_changing') }}</p>
@@ -120,41 +137,105 @@
           </div>
 
           <NuxtLink v-for="job in filteredJobs" :key="job.id" :to="localePath(`/jobs/${job.id}`)"
-               class="block hover:border-primary-300 dark:hover:border-primary-700 p-6 rounded-2xl group transition-all cursor-pointer bg-white dark:bg-surface-800 shadow-sm hover:shadow-md border border-surface-200 dark:border-surface-700">
-            <div class="flex flex-col sm:flex-row gap-6">
+               :class="[
+                 'group relative block transition-all duration-300 overflow-hidden cursor-pointer bg-white dark:bg-surface-800 rounded-3xl border border-surface-200 dark:border-surface-700',
+                 viewMode === 'list' 
+                   ? 'p-6 shadow-sm hover:shadow-xl hover:-translate-y-1' 
+                   : 'p-7 hover:border-primary-500/50 hover:shadow-2xl hover:shadow-primary-500/10 hover:-translate-y-2'
+               ]">
+             
+            <!-- Hover Gradient (Grid Only) -->
+            <div v-if="viewMode === 'grid'" class="absolute inset-0 bg-gradient-to-br from-primary-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+            <!-- LIST VIEW LAYOUT -->
+            <div v-if="viewMode === 'list'" class="relative z-10 flex flex-col sm:flex-row gap-6">
+               <!-- Hover Gradient (List) -->
+               <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none -z-10"></div>
+               
               <!-- Shop Logo -->
-              <div class="w-16 h-16 rounded-xl bg-surface-50 dark:bg-surface-700 flex-shrink-0 flex items-center justify-center overflow-hidden border border-surface-200 dark:border-surface-600">
+              <div class="w-16 h-16 rounded-2xl bg-surface-50 dark:bg-surface-700 flex-shrink-0 flex items-center justify-center overflow-hidden border border-surface-100 dark:border-surface-600 shadow-inner group-hover:scale-105 transition-transform">
                 <Icon :name="job.logo" class="w-8 h-8 text-surface-400 dark:text-surface-300" />
               </div>
 
               <!-- Job Details -->
-              <div class="flex-1">
+              <div class="flex-1 min-w-0">
                 <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-2">
                   <div>
-                    <h3 class="text-xl font-bold group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-1 text-surface-900 dark:text-white">{{ job.title }}</h3>
-                    <div class="flex items-center gap-2 text-surface-500 dark:text-surface-400 text-sm">
-                      <span class="font-medium text-surface-700 dark:text-surface-300">{{ job.shop }}</span>
-                      <span>•</span>
+                    <h3 class="text-xl font-bold text-surface-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors mb-2 truncate">{{ job.title }}</h3>
+                    <div class="flex items-center gap-3 text-surface-500 dark:text-surface-400 text-sm flex-wrap">
+                      <span class="font-medium text-surface-700 dark:text-surface-300 flex items-center gap-1">
+                        <Icon name="lucide:building-2" class="w-3.5 h-3.5" />
+                        {{ job.shop }}
+                      </span>
+                      <span class="w-1 h-1 rounded-full bg-surface-300 dark:bg-surface-600"></span>
                       <div class="flex items-center gap-1">
-                        <Icon name="lucide:map-pin" class="w-3 h-3" />
+                        <Icon name="lucide:map-pin" class="w-3.5 h-3.5" />
                         {{ job.location }}
                       </div>
                     </div>
                   </div>
                   <div class="text-right">
-                    <div class="text-xl font-bold text-primary-600 dark:text-primary-400">{{ job.wage }}</div>
-                    <div class="text-xs text-surface-500 dark:text-surface-400">บาท / {{ $t('nav.language') === 'TH' ? 'ชม.' : 'hr' }}</div>
+                    <div class="text-xl font-bold text-emerald-600 dark:text-emerald-400 leading-none mb-1">{{ job.wage }}</div>
+                    <div class="text-xs font-medium text-surface-400 dark:text-surface-500 uppercase tracking-wide">บาท / {{ $t('nav.language') === 'TH' ? 'ชม.' : 'hr' }}</div>
                   </div>
                 </div>
 
-                <!-- Tags -->
-                <div class="flex flex-wrap gap-2 mt-4">
-                  <span v-for="tag in job.tags" :key="tag" 
-                        class="px-2.5 py-1 rounded-md bg-surface-100 dark:bg-surface-700 text-xs font-medium text-surface-600 dark:text-surface-300 border border-surface-200 dark:border-surface-600">
-                    {{ tag }}
-                  </span>
+                <!-- Divider -->
+                <div class="h-px w-full bg-surface-100 dark:bg-surface-700 my-4 group-hover:bg-primary-100 dark:group-hover:bg-primary-900/30 transition-colors"></div>
+
+                <!-- Tags & Action -->
+                <div class="flex items-center justify-between">
+                    <div class="flex flex-wrap gap-2">
+                      <span v-for="tag in job.tags" :key="tag" 
+                            class="px-2.5 py-1 rounded-lg bg-surface-50 dark:bg-surface-900/50 text-[10px] sm:text-xs font-semibold text-surface-600 dark:text-surface-300 border border-surface-100 dark:border-surface-700 group-hover:border-primary-200 dark:group-hover:border-primary-800 transition-colors">
+                        {{ tag }}
+                      </span>
+                    </div>
+                    
+                    <div class="opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-4 group-hover:translate-x-0 duration-300 absolute right-6 bottom-6 sm:static sm:translate-x-0">
+                        <span class="w-8 h-8 rounded-full bg-primary-600 text-white flex items-center justify-center shadow-lg">
+                            <Icon name="lucide:arrow-right" class="w-4 h-4" />
+                        </span>
+                    </div>
                 </div>
               </div>
+            </div>
+
+            <!-- GRID VIEW LAYOUT (New Implementation) -->
+            <div v-else class="relative z-10 flex flex-col h-full">
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-8">
+                    <!-- Logo -->
+                    <div class="w-14 h-14 rounded-2xl bg-surface-800/50 dark:bg-black/20 backdrop-blur-sm border border-surface-100 dark:border-white/5 flex items-center justify-center shadow-inner group-hover:scale-105 transition-transform duration-500">
+                        <Icon :name="job.logo" class="w-7 h-7 text-surface-600 dark:text-gray-400" />
+                    </div>
+                    <!-- Tag Pill -->
+                    <div class="px-3 py-1.5 rounded-full bg-surface-100 dark:bg-white/5 border border-surface-200 dark:border-white/5 text-[10px] font-bold text-surface-600 dark:text-surface-400 uppercase tracking-wider backdrop-blur-md">
+                        {{ job.tags[0] || 'GENERAL' }}
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="mb-auto">
+                    <h3 class="text-xs font-bold text-surface-400 dark:text-surface-500 uppercase tracking-widest mb-2">{{ job.shop }}</h3>
+                    <h4 class="text-xl font-bold text-surface-900 dark:text-white leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{{ job.title }}</h4>
+                </div>
+
+                <!-- Divider -->
+                <div class="h-px w-full bg-surface-100 dark:bg-white/10 my-6 group-hover:scale-110 transition-transform origin-left duration-500"></div>
+
+                <!-- Footer -->
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3 text-sm text-surface-500 dark:text-surface-400">
+                        <Icon name="lucide:map-pin" class="w-4 h-4 text-primary-500" />
+                        <span class="truncate tracking-wide">{{ job.location }}</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-surface-500 dark:text-surface-400">
+                        <Icon name="lucide:wallet" class="w-4 h-4 text-emerald-500" />
+                        <span class="font-bold text-surface-900 dark:text-white tracking-wide">{{ job.wage }}</span>
+                        <span class="text-[10px] uppercase font-bold text-surface-400">THB</span>
+                    </div>
+                </div>
             </div>
           </NuxtLink>
         </div>
@@ -254,6 +335,7 @@ const { t } = useI18n()
 
 // --- Filters State ---
 const showMobileFilters = ref(false)
+const viewMode = ref<'list' | 'grid'>('list')
 const searchQuery = ref((route.query.q as string) || '')
 const selectedTypes = ref<string[]>([])
 const selectedAreas = ref<string[]>([])
