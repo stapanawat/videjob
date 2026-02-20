@@ -218,7 +218,7 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div v-for="job in recommendedJobs" :key="job.id" class="group relative bg-white dark:bg-surface-800 rounded-3xl p-6 shadow-lg shadow-surface-200/50 dark:shadow-none border border-surface-100 dark:border-surface-700 hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+                <NuxtLink v-for="job in recommendedJobs" :key="job.id" :to="localePath(`/jobs/${job.id}`)" class="block group relative bg-white dark:bg-surface-800 rounded-3xl p-6 shadow-lg shadow-surface-200/50 dark:shadow-none border border-surface-100 dark:border-surface-700 hover:-translate-y-2 transition-all duration-500 overflow-hidden">
                     <!-- Hover Gradient Overlay -->
                     <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-accent-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                     
@@ -257,7 +257,7 @@
                            </button>
                         </div>
                     </div>
-                </div>
+                </NuxtLink>
             </div>
         </div>
     </section>
