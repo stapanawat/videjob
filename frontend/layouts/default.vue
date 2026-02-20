@@ -2,9 +2,9 @@
   <div class="min-h-screen bg-surface-50 dark:bg-surface-950 bg-grid-pattern text-surface-900 dark:text-surface-100 font-sans selection:bg-primary-500/30 selection:text-primary-700 relative overflow-hidden">
     <!-- Decorative Background - Sophisticated Ambient Glow -->
     <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-      <div class="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-primary-900/10 dark:bg-primary-900/20 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen opacity-60 animate-pulse-slow"></div>
-      <div class="absolute top-[10%] right-[-10%] w-[600px] h-[600px] bg-accent-400/10 dark:bg-accent-900/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen opacity-50"></div>
-      <div class="absolute bottom-[-20%] left-[10%] w-[900px] h-[900px] bg-indigo-200/20 dark:bg-indigo-950/30 rounded-full blur-[130px] opacity-40"></div>
+      <div class="absolute top-[-20%] left-[-10%] w-[800px] h-[800px] bg-primary-500/5 dark:bg-primary-900/20 rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen opacity-60 animate-pulse-slow"></div>
+      <div class="absolute top-[10%] right-[-10%] w-[600px] h-[600px] bg-accent-400/5 dark:bg-accent-900/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen opacity-40"></div>
+      <div class="absolute bottom-[-20%] left-[10%] w-[900px] h-[900px] bg-indigo-100/10 dark:bg-indigo-950/30 rounded-full blur-[130px] opacity-30"></div>
       <!-- Noise Texture Overlay -->
       <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
     </div>
@@ -42,6 +42,7 @@
         <!-- Desktop Actions -->
         <div class="hidden md:flex items-center gap-4">
           <LangSwitcher />
+          <ColorModeToggle />
           <div class="w-px h-6 bg-surface-200 dark:bg-surface-700 mx-2"></div>
           
           <template v-if="isAuthenticated">
@@ -107,7 +108,10 @@
           <div class="flex flex-col gap-4 mt-4">
             <div class="flex items-center justify-between">
               <span class="text-surface-500 dark:text-surface-400 text-sm">{{ $t('nav.language') }}</span>
-              <LangSwitcher />
+              <div class="flex items-center gap-2">
+                <LangSwitcher />
+                <ColorModeToggle />
+              </div>
             </div>
             <template v-if="isAuthenticated">
                <!-- User Info -->

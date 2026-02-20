@@ -30,11 +30,11 @@
         <div class="grid grid-cols-2 gap-4">
           <div class="space-y-1">
             <label class="text-sm font-medium text-surface-700 dark:text-surface-300">{{ $t('auth.first_name') }}</label>
-            <input type="text" required class="w-full bg-surface-50 dark:bg-surface-900 border-surface-200 dark:border-surface-700 rounded-xl px-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 focus:outline-none placeholder:text-surface-400" placeholder="John">
+            <input type="text" required class="w-full bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-xl px-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 dark:focus:border-primary-400 focus:ring-4 focus:ring-primary-500/10 focus:outline-none placeholder:text-surface-400 transition-all" placeholder="John">
           </div>
           <div class="space-y-1">
             <label class="text-sm font-medium text-surface-700 dark:text-surface-300">{{ $t('auth.last_name') }}</label>
-            <input type="text" required class="w-full bg-surface-50 dark:bg-surface-900 border-surface-200 dark:border-surface-700 rounded-xl px-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 focus:outline-none placeholder:text-surface-400" placeholder="Doe">
+            <input type="text" required class="w-full bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-xl px-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 dark:focus:border-primary-400 focus:ring-4 focus:ring-primary-500/10 focus:outline-none placeholder:text-surface-400 transition-all" placeholder="Doe">
           </div>
         </div>
 
@@ -42,7 +42,7 @@
           <label class="text-sm font-medium text-surface-700 dark:text-surface-300">{{ $t('auth.email') }}</label>
           <div class="relative">
             <Icon name="lucide:mail" class="absolute left-3 top-1/2 -translate-y-1/2 text-surface-400 w-5 h-5" />
-            <input type="email" required class="w-full bg-surface-50 dark:bg-surface-900 border-surface-200 dark:border-surface-700 rounded-xl pl-10 pr-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 focus:outline-none placeholder:text-surface-400" placeholder="name@example.com">
+            <input type="email" required class="w-full bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-xl pl-10 pr-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 dark:focus:border-primary-400 focus:ring-4 focus:ring-primary-500/10 focus:outline-none placeholder:text-surface-400 transition-all" placeholder="name@example.com">
           </div>
         </div>
         
@@ -50,11 +50,11 @@
           <label class="text-sm font-medium text-surface-700 dark:text-surface-300">Password</label>
           <div class="relative">
             <Icon name="lucide:lock" class="absolute left-3 top-1/2 -translate-y-1/2 text-surface-400 w-5 h-5" />
-            <input type="password" required class="w-full bg-surface-50 dark:bg-surface-900 border-surface-200 dark:border-surface-700 rounded-xl pl-10 pr-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 focus:outline-none placeholder:text-surface-400" placeholder="Create a password">
+            <input type="password" required class="w-full bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-xl pl-10 pr-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 dark:focus:border-primary-400 focus:ring-4 focus:ring-primary-500/10 focus:outline-none placeholder:text-surface-400 transition-all" placeholder="Create a password">
           </div>
         </div>
 
-        <button :disabled="loading" class="w-full py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl shadow-lg shadow-primary-500/20 active:scale-95 transition-all flex items-center justify-center gap-2">
+        <button :disabled="loading" class="w-full py-3 bg-primary-600 dark:bg-primary-500 hover:bg-primary-700 dark:hover:bg-primary-600 text-white font-bold rounded-xl shadow-lg shadow-primary-500/20 active:scale-95 transition-all flex items-center justify-center gap-2">
           <Icon v-if="loading" name="lucide:loader-2" class="w-5 h-5 animate-spin" />
           <span v-else>{{ $t('auth.create_account') }}</span>
         </button>

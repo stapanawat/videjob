@@ -174,12 +174,12 @@
     </div>
 
     <!-- Mobile Sticky Apply Bar -->
-    <div class="fixed bottom-0 left-0 w-full bg-white dark:bg-surface-900 border-t border-surface-200 dark:border-surface-800 p-4 lg:hidden z-40 flex items-center gap-4 safe-area-bottom">
+    <div class="fixed bottom-0 left-0 w-full bg-white dark:bg-surface-900 border-t border-surface-200 dark:border-surface-800 p-4 lg:hidden z-40 flex items-center gap-4 safe-area-bottom shadow-[0_-10px_20px_rgba(0,0,0,0.05)] dark:shadow-none">
       <div class="flex-1">
         <div class="text-xs text-surface-500 dark:text-surface-400">ค่าตอบแทน</div>
         <div class="text-xl font-bold text-primary-600 dark:text-primary-400">{{ job.wage }} <span class="text-xs font-normal text-surface-500">/ชม.</span></div>
       </div>
-      <button @click="openApplyModal = true" class="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl shadow-lg shadow-primary-500/20">
+      <button @click="openApplyModal = true" class="px-8 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl shadow-lg shadow-primary-500/20 active:scale-95 transition-all">
         สมัครเลย
       </button>
     </div>
@@ -244,11 +244,64 @@
         </div>
       </div>
     </Transition>
+    <!-- Similar Jobs -->
+    <section class="mt-16 border-t border-surface-200 dark:border-surface-800 pt-16">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-2xl font-bold text-surface-900 dark:text-white">งานที่ใกล้เคียงกัน</h2>
+        <NuxtLink :to="localePath('/jobs')" class="text-primary-600 dark:text-primary-400 font-semibold hover:underline flex items-center gap-1 text-sm">
+          ดูงานทั้งหมด <Icon name="lucide:arrow-right" class="w-4 h-4" />
+        </NuxtLink>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <NuxtLink v-for="related in relatedJobs" :key="related.id" :to="localePath(`/jobs/${related.id}`)" class="block group relative bg-white dark:bg-surface-800 rounded-3xl p-6 shadow-lg shadow-surface-200/50 dark:shadow-none border border-surface-100 dark:border-surface-700 hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-500/5 dark:from-primary-500/5 to-accent-500/5 dark:to-accent-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+          
+          <div class="relative z-10 flex flex-col h-full">
+            <div class="flex items-start justify-between mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-surface-50 dark:bg-surface-700 flex items-center justify-center border border-surface-100 dark:border-surface-600 shadow-sm overflow-hidden">
+                <Icon :name="related.logo" class="w-7 h-7 text-surface-400 dark:text-surface-300" />
+              </div>
+              <div class="px-3 py-1 rounded-full bg-surface-100 dark:bg-surface-700 text-[10px] font-bold text-surface-600 dark:text-surface-300 uppercase tracking-wider">
+                {{ related.category }}
+              </div>
+            </div>
+
+            <div class="mb-auto">
+              <h3 class="font-bold text-surface-400 uppercase text-xs tracking-wider mb-1">{{ related.shop }}</h3>
+              <h4 class="text-lg font-bold text-surface-900 dark:text-white line-clamp-2 leading-snug group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{{ related.title }}</h4>
+            </div>
+
+            <div class="h-px w-full bg-surface-100 dark:bg-surface-700 my-6 group-hover:scale-x-110 transition-transform origin-left"></div>
+
+            <div class="space-y-3">
+              <div class="flex items-center gap-2 text-sm text-surface-500 dark:text-surface-400">
+                <Icon name="lucide:map-pin" class="w-4 h-4 text-primary-500" />
+                <span class="truncate">{{ related.location }}</span>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-surface-500 dark:text-surface-400">
+                <Icon name="lucide:wallet" class="w-4 h-4 text-emerald-500" />
+                <span class="font-semibold text-surface-900 dark:text-white">{{ related.wage }}</span>
+                <span class="text-xs">{{ $t('recommended.labels.baht') }}</span>
+                <span class="text-[10px] opacity-70">/ชม.</span>
+              </div>
+            </div>
+            
+            <div class="mt-6 pt-0 h-0 overflow-hidden group-hover:h-12 group-hover:pt-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
+              <button class="w-full py-2 bg-surface-900 dark:bg-white text-white dark:text-surface-900 rounded-xl font-bold text-sm shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all">
+                {{ $t('recommended.labels.view_details') || 'ดูรายละเอียด' }}
+              </button>
+            </div>
+          </div>
+        </NuxtLink>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
 const route = useRoute()
+const localePath = useLocalePath()
 const openApplyModal = ref(false)
 const submitted = ref(false)
 
@@ -281,6 +334,13 @@ const reviews = [
   { id: 1, reviewer: 'Nadech K.', role: 'Former Barista', rating: 5.0, date: '2 days ago', comment: 'เจ้าของร้านใจดีมากครับ สอนงานละเอียด เพื่อนร่วมงานเป็นกันเอง เลิกงานตรงเวลา' },
   { id: 2, reviewer: 'Yaya U.', role: 'Part-time Store', rating: 4.5, date: '1 week ago', comment: 'งานสนุกค่ะ ลูกค้าเยอะช่วงเที่ยงแต่ทิปหนักมาก! สวัสดิการข้าวมื้อเที่ยงอร่อย' },
   { id: 3, reviewer: 'Boy P.', role: 'Weekend Staff', rating: 4.0, date: '2 weeks ago', comment: 'ร้านสวย บรรยากาศดี แต่บางทีลูกค้าเยอะอาจจะเหนื่อยหน่อยครับ โดยรวมโอเค' },
+]
+
+const relatedJobs = [
+  { id: 10, title: 'พนักงานบริการ', shop: 'Cafe Amazon', location: 'Siam Square', wage: '50 - 65', logo: 'lucide:coffee', category: 'Cafe' },
+  { id: 11, title: 'Cashier', shop: 'Starbucks', location: 'Siam Discovery', wage: '60 - 80', logo: 'lucide:coffee', category: 'Cafe' },
+  { id: 12, title: 'พนักงานชงเครื่องดื่ม', shop: 'True Coffee', location: 'Siam Paragon', wage: '55 - 70', logo: 'lucide:coffee', category: 'Cafe' },
+  { id: 13, title: 'Floor Staff', shop: 'The Coffee Club', location: 'MBK Center', wage: '58 - 75', logo: 'lucide:coffee', category: 'Cafe' },
 ]
 </script>
 

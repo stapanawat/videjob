@@ -7,7 +7,6 @@
         
         <!-- Left Column: Content -->
         <div class="text-left space-y-10" v-auto-animate>
-          <!-- Badge -->
           <div class="inline-flex items-center gap-3 pl-1 pr-4 py-1 rounded-full bg-white/40 dark:bg-surface-800/40 border border-surface-200/50 dark:border-surface-700/50 backdrop-blur-md shadow-sm ring-1 ring-white/20">
             <span class="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30">
               <Icon name="lucide:sparkles" class="w-3 h-3" />
@@ -15,7 +14,6 @@
             <span class="text-sm font-semibold tracking-wide text-surface-700 dark:text-surface-200 uppercase text-[10px]">{{ $t('hero.badge') }}</span>
           </div>
           
-          <!-- Title -->
           <div class="space-y-4">
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-surface-900 dark:text-white leading-[1.1]">
               <span class="block text-transparent bg-clip-text bg-gradient-to-r from-surface-900 to-surface-600 dark:from-white dark:to-surface-400">Find your</span>
@@ -26,7 +24,6 @@
             </p>
           </div>
 
-          <!-- Search Box (Integrated) -->
           <div class="bg-white dark:bg-surface-800 p-2 rounded-2xl shadow-2xl shadow-primary-900/10 dark:shadow-black/50 border border-surface-100 dark:border-surface-700 max-w-lg transform hover:-translate-y-1 transition-all duration-300">
             <div class="relative flex items-center">
               <Icon name="lucide:search" class="absolute left-4 text-surface-400 w-5 h-5" />
@@ -36,63 +33,71 @@
                 :placeholder="$t('hero.search_placeholder')"
                 class="w-full bg-transparent border-none py-4 pl-12 pr-4 text-surface-900 dark:text-white placeholder:text-surface-400 focus:ring-0 text-base"
                 @keyup.enter="doSearch"
-              >
+              />
               <button @click="doSearch" class="m-1 px-6 py-3 bg-surface-900 dark:bg-white text-white dark:text-surface-900 font-bold rounded-xl hover:bg-primary-600 dark:hover:bg-primary-400 transition-colors shadow-lg">
                 <Icon name="lucide:arrow-right" class="w-5 h-5" />
               </button>
             </div>
           </div>
           
-          <!-- Trust Indicators -->
           <div class="pt-4 flex items-center gap-6 text-surface-500 dark:text-surface-400 text-sm font-medium">
              <div class="flex -space-x-3">
-               <img v-for="i in 4" :key="i" :src="`https://ui-avatars.com/api/?name=User+${i}&background=random&color=fff`" class="w-8 h-8 rounded-full border-2 border-surface-50 dark:border-surface-950" alt="User">
+               <img v-for="i in 4" :key="i" :src="`https://ui-avatars.com/api/?name=User+${i}&background=random&color=fff`" class="w-8 h-8 rounded-full border-2 border-surface-50 dark:border-surface-950" alt="User" />
              </div>
              <span>Trusted by 10k+ candidates</span>
           </div>
         </div>
 
         <!-- Right Column: Abstract Visual -->
-        <div class="relative hidden lg:block h-[600px]">
-           <!-- Abstract shapes composition -->
-           <div class="absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-accent-500/20 rounded-[3rem] rotate-3 backdrop-blur-3xl border border-white/10"></div>
-           <div class="absolute inset-0 bg-surface-900/5 dark:bg-white/5 rounded-[3rem] -rotate-2 backdrop-blur-sm border border-white/20 z-10 overflow-hidden shadow-2xl">
-              <!-- Grid/UI Mockup -->
-              <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-50 mix-blend-overlay"></div>
+        <div class="relative hidden lg:block h-[620px]">
+           <div class="absolute inset-x-0 inset-y-10 bg-gradient-to-tr from-primary-500/20 to-accent-500/20 rounded-[4rem] rotate-3 backdrop-blur-3xl border border-white/10 dark:border-white/5"></div>
+           <div class="absolute inset-y-0 inset-x-2 bg-white/40 dark:bg-white/5 rounded-[4rem] -rotate-2 backdrop-blur-md border border-white/30 dark:border-white/10 z-10 transition-all duration-700 shadow-2xl shadow-primary-900/10 dark:shadow-black/50">
+              <!-- Grid/UI Mockup Overlay -->
+              <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-30 dark:opacity-50 mix-blend-overlay pointer-events-none"></div>
               
-              <!-- Floating Card 1 -->
-              <div class="absolute top-20 left-10 right-20 bg-white dark:bg-surface-800 p-6 rounded-2xl shadow-xl border border-surface-100 dark:border-surface-700 animate-fade-in-up">
+              <!-- Card 1: Job Listing (Company Logo) -->
+              <div class="absolute top-16 left-12 right-8 bg-white/80 dark:bg-surface-800/80 backdrop-blur-xl p-5 rounded-3xl shadow-2xl border border-white/50 dark:border-surface-700/50 animate-fade-in-up transition-all hover:scale-[1.02] duration-500">
                   <div class="flex items-center gap-4 mb-4">
-                      <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900/50 rounded-xl flex items-center justify-center text-primary-600">
-                          <Icon name="lucide:code-2" class="w-6 h-6" />
+                      <div class="w-14 h-14 rounded-2xl overflow-hidden border border-surface-100 dark:border-surface-700 shadow-sm bg-surface-50">
+                          <img src="https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=120&h=120" class="w-full h-full object-cover" alt="Company Logo" />
                       </div>
                       <div>
-                          <div class="font-bold text-surface-900 dark:text-white">Senior Frontend Dev</div>
-                          <div class="text-xs text-surface-500">Tech Corp • Remote</div>
+                          <div class="font-bold text-surface-900 dark:text-white text-lg">Senior Frontend Dev</div>
+                          <div class="text-xs text-primary-600 dark:text-primary-400 font-semibold tracking-wide uppercase">Creative Studio • Bangkok</div>
                       </div>
                   </div>
-                  <div class="h-2 bg-surface-100 dark:bg-surface-700 rounded-full w-3/4 mb-2"></div>
-                  <div class="h-2 bg-surface-100 dark:bg-surface-700 rounded-full w-1/2"></div>
+                  <div class="space-y-2">
+                     <div class="h-2 bg-primary-500/10 dark:bg-surface-700 rounded-full w-4/5"></div>
+                     <div class="h-2 bg-primary-500/5 dark:bg-surface-700 rounded-full w-2/3"></div>
+                  </div>
               </div>
 
-               <!-- Floating Card 2 -->
-              <div class="absolute bottom-32 -right-6 left-20 bg-white dark:bg-surface-800 p-6 rounded-2xl shadow-xl border border-surface-100 dark:border-surface-700 animate-fade-in-up animate-delay-200 z-20">
+               <!-- Card 2: Candidate Status -->
+              <div class="absolute bottom-24 right-4 left-20 bg-white/90 dark:bg-surface-800/90 backdrop-blur-xl p-5 rounded-3xl shadow-2xl border border-white/50 dark:border-surface-700/50 animate-fade-in-up animate-delay-300 z-30 transition-all hover:scale-[1.02] duration-500">
                   <div class="flex items-center gap-4">
-                       <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center text-emerald-600">
-                           <Icon name="lucide:check" class="w-5 h-5" />
+                       <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-500 shadow-lg shadow-emerald-500/20">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=120&h=120" class="w-full h-full object-cover" alt="Candidate" />
                        </div>
                        <div>
-                           <div class="font-bold text-lg text-emerald-600 dark:text-emerald-400">Application Sent!</div>
-                           <div class="text-xs text-surface-500">Good luck 🚀</div>
+                           <div class="font-bold text-lg text-emerald-600 dark:text-emerald-400 leading-tight">Match Successful!</div>
+                           <div class="text-xs text-surface-500 dark:text-surface-400">98% Compatibility Found 🚀</div>
                        </div>
                   </div>
               </div>
+
+               <!-- Card 3: New Match Progress -->
+               <div class="absolute top-[45%] -left-4 bg-white/95 dark:bg-surface-900/95 backdrop-blur-2xl p-4 rounded-3xl shadow-2xl border border-white/60 dark:border-surface-700/50 animate-fade-in-up animate-delay-500 z-50 hover:scale-[1.1] transition-all duration-500">
+                  <div class="flex flex-col items-center gap-1">
+                     <div class="text-[10px] font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest leading-none mb-1">Match</div>
+                     <div class="text-3xl font-black text-surface-900 dark:text-white">95%</div>
+                  </div>
+               </div>
            </div>
         </div>
       </div>
-      
-      <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-20 opacity-50">
+
+      <!-- Indicator -->
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce z-20 opacity-50">
         <Icon name="lucide:mouse-pointer-2" class="w-6 h-6 text-surface-400 dark:text-surface-600" />
       </div>
     </section>
@@ -114,25 +119,25 @@
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <!-- Large Card 1 (Main) -->
             <div class="md:col-span-2 relative overflow-hidden rounded-[2.5rem] p-10 group border border-surface-200 dark:border-white/10 bg-white dark:bg-surface-900/50 backdrop-blur-xl shadow-2xl hover:shadow-primary-500/20 transition-all duration-500">
-               <!-- Gradient Mesh Background -->
-               <div class="absolute inset-0 bg-gradient-to-br from-primary-600/90 to-indigo-700/90 opacity-100 group-hover:scale-105 transition-transform duration-700"></div>
-               <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+               <!-- Gradient Mesh Background - Responsive -->
+               <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-indigo-500/10 dark:from-primary-600/90 dark:to-indigo-700/90 opacity-100 group-hover:scale-105 transition-transform duration-700"></div>
+               <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 dark:opacity-20 mix-blend-overlay"></div>
                
                <!-- Content -->
                <div class="relative z-10 flex flex-col h-full justify-between">
                  <div class="space-y-2">
-                   <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md border border-white/20 text-white/90 text-sm font-medium w-fit">
+                   <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/10 dark:bg-white/20 backdrop-blur-md border border-primary-500/20 dark:border-white/20 text-primary-700 dark:text-white/90 text-sm font-medium w-fit">
                       <Icon name="lucide:briefcase" class="w-4 h-4" />
                       Popular
                    </div>
-                   <div class="text-7xl font-bold text-white tracking-tight">{{ $t('stats.fulltime.count') }}</div>
-                   <div class="text-2xl font-semibold text-primary-100">{{ $t('stats.fulltime.title') }}</div>
+                   <div class="text-7xl font-bold text-surface-900 dark:text-white tracking-tight">{{ $t('stats.fulltime.count') }}</div>
+                   <div class="text-2xl font-semibold text-primary-600 dark:text-primary-100">{{ $t('stats.fulltime.title') }}</div>
                  </div>
-                 <p class="text-primary-100/80 max-w-md text-lg mt-6">{{ $t('stats.fulltime.desc') }}</p>
+                 <p class="text-surface-600 dark:text-primary-100/80 max-w-md text-lg mt-6">{{ $t('stats.fulltime.desc') }}</p>
                </div>
                
                <!-- Decorative Icon -->
-               <Icon name="lucide:briefcase" class="absolute -bottom-6 -right-6 w-48 h-48 text-white/10 rotate-12 group-hover:rotate-6 group-hover:scale-110 transition-all duration-700" />
+               <Icon name="lucide:briefcase" class="absolute -bottom-6 -right-6 w-48 h-48 text-primary-500/10 dark:text-white/10 rotate-12 group-hover:rotate-6 group-hover:scale-110 transition-all duration-700" />
             </div>
 
             <!-- Tall Card 2 (Internship) -->
@@ -161,16 +166,16 @@
                </div>
             </div>
 
-             <!-- Wide Card 3 (Parttime) -->
-            <div class="relative overflow-hidden rounded-[2.5rem] p-8 bg-surface-900 text-white border border-surface-700 hover:border-accent-500/50 transition-colors group flex flex-col justify-center">
-               <div class="absolute inset-0 bg-gradient-to-r from-accent-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+             <!-- Wide Card 3 (Parttime) - Responsive -->
+            <div class="relative overflow-hidden rounded-[2.5rem] p-8 bg-surface-50 dark:bg-surface-900 text-surface-900 dark:text-white border border-surface-200 dark:border-surface-700 hover:border-accent-500/50 transition-colors group flex flex-col justify-center shadow-sm">
+               <div class="absolute inset-0 bg-gradient-to-r from-accent-500/10 dark:from-accent-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                <div class="relative z-10 flex items-center justify-between">
                   <div>
-                    <div class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-white mb-1">{{ $t('stats.parttime.count') }}</div>
-                    <div class="text-accent-200 font-medium">{{ $t('stats.parttime.title') }}</div>
+                    <div class="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-accent-600 dark:from-accent-400 to-surface-700 dark:to-white mb-1">{{ $t('stats.parttime.count') }}</div>
+                    <div class="text-accent-600 dark:text-accent-200 font-medium">{{ $t('stats.parttime.title') }}</div>
                   </div>
-                  <div class="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center bg-white/5 backdrop-blur-sm group-hover:rotate-180 transition-transform duration-700">
-                     <Icon name="lucide:clock" class="w-6 h-6 text-accent-300" />
+                  <div class="w-14 h-14 rounded-full border border-surface-200 dark:border-white/20 flex items-center justify-center bg-white/50 dark:bg-white/5 backdrop-blur-sm group-hover:rotate-180 transition-transform duration-700 shadow-sm">
+                     <Icon name="lucide:clock" class="w-6 h-6 text-accent-500 dark:text-accent-300" />
                   </div>
                </div>
             </div>
@@ -358,59 +363,59 @@
     <section class="py-24 px-6">
       <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
         <!-- Candidate Card -->
-        <div class="group relative overflow-hidden rounded-[2.5rem] p-10 bg-gradient-to-br from-emerald-900 to-emerald-950 text-white min-h-[400px] flex flex-col justify-between hover:scale-[1.01] transition-transform duration-500 shadow-2xl shadow-emerald-900/20">
+        <div class="group relative overflow-hidden rounded-[2.5rem] p-10 bg-gradient-to-br from-emerald-50 to-emerald-100 dark:from-emerald-900 dark:to-emerald-950 text-surface-900 dark:text-white min-h-[400px] flex flex-col justify-between hover:scale-[1.01] transition-transform duration-500 shadow-2xl shadow-emerald-900/5 dark:shadow-emerald-900/20 border border-emerald-200 dark:border-transparent">
             <!-- Background Decor -->
-            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-            <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/20 rounded-full blur-[80px]"></div>
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 dark:opacity-20 mix-blend-overlay"></div>
+            <div class="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-full blur-[80px]"></div>
             
             <div class="relative z-10">
-               <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-md mb-8 border border-white/10">
-                 <Icon name="lucide:user" class="w-7 h-7 text-emerald-300" />
+               <div class="w-14 h-14 bg-emerald-500/10 dark:bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-md mb-8 border border-emerald-500/20 dark:border-white/10">
+                 <Icon name="lucide:user" class="w-7 h-7 text-emerald-600 dark:text-emerald-300" />
                </div>
                <h2 class="text-4xl font-bold mb-4 leading-tight">{{ $t('cta.candidate.title') }}</h2>
-               <p class="text-emerald-100 text-lg opacity-90 max-w-sm">{{ $t('cta.candidate.subtitle') }}</p>
+               <p class="text-surface-600 dark:text-emerald-100 text-lg opacity-90 max-w-sm">{{ $t('cta.candidate.subtitle') }}</p>
             </div>
 
             <div class="relative z-10 pt-12">
-               <NuxtLink :to="localePath('/register')" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-emerald-950 font-bold rounded-xl hover:bg-emerald-50 transition-colors shadow-lg">
+               <NuxtLink :to="localePath('/register')" class="inline-flex items-center gap-2 px-8 py-4 bg-emerald-600 dark:bg-white text-white dark:text-emerald-950 font-bold rounded-xl hover:bg-emerald-700 dark:hover:bg-emerald-50 transition-colors shadow-lg">
                  {{ $t('cta.candidate.button') }} <Icon name="lucide:arrow-right" class="w-5 h-5" />
                </NuxtLink>
-               <div class="mt-6 flex items-center gap-2 text-sm text-emerald-200/80 font-medium">
+               <div class="mt-6 flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-200/80 font-medium">
                   <Icon name="lucide:shield-check" class="w-4 h-4" />
                   {{ $t('cta.candidate.benefit') }}
                </div>
             </div>
             
              <!-- Illustration -->
-            <Icon name="lucide:file-text" class="absolute -bottom-12 -right-12 w-64 h-64 text-emerald-500/10 rotate-12 group-hover:rotate-6 transition-transform duration-700" />
+            <Icon name="lucide:file-text" class="absolute -bottom-12 -right-12 w-64 h-64 text-emerald-500/5 dark:text-emerald-500/10 rotate-12 group-hover:rotate-6 transition-transform duration-700" />
         </div>
 
         <!-- Employer Card -->
-        <div class="group relative overflow-hidden rounded-[2.5rem] p-10 bg-gradient-to-br from-primary-900 to-primary-950 text-white min-h-[400px] flex flex-col justify-between hover:scale-[1.01] transition-transform duration-500 shadow-2xl shadow-primary-900/20">
+        <div class="group relative overflow-hidden rounded-[2.5rem] p-10 bg-gradient-to-br from-primary-50 to-primary-100 dark:from-primary-900 dark:to-primary-950 text-surface-900 dark:text-white min-h-[400px] flex flex-col justify-between hover:scale-[1.01] transition-transform duration-500 shadow-2xl shadow-primary-900/5 dark:shadow-primary-900/20 border border-primary-200 dark:border-transparent">
              <!-- Background Decor -->
-            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
-            <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/20 rounded-full blur-[80px]"></div>
+            <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 dark:opacity-20 mix-blend-overlay"></div>
+            <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 dark:bg-primary-500/20 rounded-full blur-[80px]"></div>
 
             <div class="relative z-10">
-               <div class="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-md mb-8 border border-white/10">
-                 <Icon name="lucide:building-2" class="w-7 h-7 text-primary-300" />
+               <div class="w-14 h-14 bg-primary-500/10 dark:bg-white/10 rounded-2xl flex items-center justify-center backdrop-blur-md mb-8 border border-primary-500/20 dark:border-white/10">
+                 <Icon name="lucide:building-2" class="w-7 h-7 text-primary-600 dark:text-primary-300" />
                </div>
                <h2 class="text-4xl font-bold mb-4 leading-tight">{{ $t('cta.employer.title') }}</h2>
-               <p class="text-primary-100 text-lg opacity-90 max-w-sm">{{ $t('cta.employer.subtitle') }}</p>
+               <p class="text-surface-600 dark:text-primary-100 text-lg opacity-90 max-w-sm">{{ $t('cta.employer.subtitle') }}</p>
             </div>
 
             <div class="relative z-10 pt-12">
-               <NuxtLink :to="localePath('/employer/post-job')" class="inline-flex items-center gap-2 px-8 py-4 bg-white text-primary-950 font-bold rounded-xl hover:bg-primary-50 transition-colors shadow-lg">
+               <NuxtLink :to="localePath('/employer/post-job')" class="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 dark:bg-white text-white dark:text-primary-950 font-bold rounded-xl hover:bg-primary-700 dark:hover:bg-primary-50 transition-colors shadow-lg">
                  {{ $t('cta.employer.button') }} <Icon name="lucide:arrow-right" class="w-5 h-5" />
                </NuxtLink>
-               <div class="mt-6 flex items-center gap-2 text-sm text-primary-200/80 font-medium">
+               <div class="mt-6 flex items-center gap-2 text-sm text-primary-600 dark:text-primary-200/80 font-medium">
                   <Icon name="lucide:sparkles" class="w-4 h-4" />
                   {{ $t('cta.employer.benefit') }}
                </div>
             </div>
 
              <!-- Illustration -->
-            <Icon name="lucide:search" class="absolute -bottom-12 -right-12 w-64 h-64 text-primary-500/10 -rotate-12 group-hover:-rotate-6 transition-transform duration-700" />
+            <Icon name="lucide:search" class="absolute -bottom-12 -right-12 w-64 h-64 text-primary-500/5 dark:text-primary-500/10 -rotate-12 group-hover:-rotate-6 transition-transform duration-700" />
         </div>
       </div>
     </section>

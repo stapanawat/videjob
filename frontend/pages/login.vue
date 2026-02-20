@@ -28,7 +28,7 @@
           <label class="text-sm font-medium text-surface-700 dark:text-surface-300">{{ $t('auth.email_user') }}</label>
           <div class="relative">
             <Icon name="lucide:user" class="absolute left-3 top-1/2 -translate-y-1/2 text-surface-400 w-5 h-5" />
-            <input type="text" required class="w-full bg-surface-50 dark:bg-surface-900 border-surface-200 dark:border-surface-700 rounded-xl pl-10 pr-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 focus:outline-none placeholder:text-surface-400" :placeholder="$t('hero.search_placeholder')">
+            <input type="text" required class="w-full bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-xl pl-10 pr-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 dark:focus:border-primary-400 focus:ring-4 focus:ring-primary-500/10 focus:outline-none placeholder:text-surface-400 transition-all" :placeholder="$t('hero.search_placeholder')">
           </div>
         </div>
         
@@ -39,11 +39,11 @@
           </div>
           <div class="relative">
             <Icon name="lucide:lock" class="absolute left-3 top-1/2 -translate-y-1/2 text-surface-400 w-5 h-5" />
-            <input type="password" required class="w-full bg-surface-50 dark:bg-surface-900 border-surface-200 dark:border-surface-700 rounded-xl pl-10 pr-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 focus:outline-none placeholder:text-surface-400" placeholder="••••••••">
+            <input type="password" required class="w-full bg-surface-50 dark:bg-surface-900 border border-surface-200 dark:border-surface-700 rounded-xl pl-10 pr-4 py-3 text-surface-900 dark:text-white focus:border-primary-500 dark:focus:border-primary-400 focus:ring-4 focus:ring-primary-500/10 focus:outline-none placeholder:text-surface-400 transition-all" placeholder="••••••••">
           </div>
         </div>
 
-        <button :disabled="loading" class="w-full py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl shadow-lg shadow-primary-500/20 active:scale-95 transition-all flex items-center justify-center gap-2">
+        <button :disabled="loading" class="w-full py-3 bg-primary-600 dark:bg-primary-500 hover:bg-primary-700 dark:hover:bg-primary-600 text-white font-bold rounded-xl shadow-lg shadow-primary-500/20 active:scale-95 transition-all flex items-center justify-center gap-2">
           <Icon v-if="loading" name="lucide:loader-2" class="w-5 h-5 animate-spin" />
           <span v-else>{{ $t('auth.signin_button') }}</span>
         </button>

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
     /* Colors - Reference CSS Variables */
     --color-primary-50: var(--color-primary-50);
@@ -68,18 +70,18 @@
     --color-accent-500: #10b981;
     --color-accent-600: #059669;
 
-    /* Surface - Cool Slate with a hint of blue */
-    --color-surface-50: #f8fafc;
-    --color-surface-100: #f1f5f9;
-    --color-surface-200: #e2e8f0;
-    --color-surface-300: #cbd5e1;
-    --color-surface-400: #94a3b8;
-    --color-surface-500: #64748b;
-    --color-surface-600: #475569;
-    --color-surface-700: #334155;
-    --color-surface-800: #1e293b;
-    --color-surface-900: #0f172a;
-    --color-surface-950: #020617;
+    /* Surface - Luxury Light (Pearl/Warm Gray) */
+    --color-surface-50: #fafaf9;
+    --color-surface-100: #f5f5f4;
+    --color-surface-200: #e7e5e4;
+    --color-surface-300: #d6d3d1;
+    --color-surface-400: #a8a29e;
+    --color-surface-500: #78716c;
+    --color-surface-600: #57534e;
+    --color-surface-700: #44403c;
+    --color-surface-800: #292524;
+    --color-surface-900: #1c1917;
+    --color-surface-950: #0c0a09;
 
     /* Semantic */
     --color-success-500: #10b981;
@@ -95,10 +97,10 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    /* Light mode defaults */
-    background-color: #f8fafc;
-    color: #0f172a;
+    transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s ease;
+    /* Light mode defaults - Premium Pearl */
+    background-color: #fafaf9;
+    color: #1c1917;
 }
 
 /* Dark mode body */

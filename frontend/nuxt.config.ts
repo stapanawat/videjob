@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// Restarting at 15:58
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
