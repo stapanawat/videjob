@@ -12,7 +12,7 @@
     <NuxtRouteAnnouncer />
 
     <!-- Navbar - Premium Glass -->
-    <nav class="fixed top-0 inset-x-0 z-50 bg-white/70 dark:bg-surface-900/70 backdrop-blur-xl border-b border-white/20 dark:border-white/5 transition-all duration-300 supports-[backdrop-filter]:bg-white/60">
+    <nav class="fixed top-0 inset-x-0 z-50 bg-white/80 dark:bg-surface-900/70 backdrop-blur-xl border-b border-surface-200 dark:border-white/5 shadow-sm dark:shadow-none transition-all duration-300 supports-[backdrop-filter]:bg-white/60">
       <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <NuxtLink :to="localePath('/')" class="flex items-center gap-3 group z-50 relative">
           <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-600 to-primary-800 flex items-center justify-center shadow-lg shadow-primary-900/20 group-hover:scale-105 transition-transform duration-300 ring-1 ring-white/20">
@@ -63,6 +63,7 @@
                   <div class="text-xs text-surface-500 dark:text-surface-400 truncate">{{ user?.email }}</div>
                 </div>
                 <NuxtLink :to="localePath('/employer/dashboard')" class="block px-4 py-2 text-sm text-surface-700 dark:text-surface-200 hover:bg-surface-50 dark:hover:bg-surface-700">{{ $t('nav.dashboard') }}</NuxtLink>
+                <NuxtLink :to="localePath('/employer/manage-jobs')" class="block px-4 py-2 text-sm text-surface-700 dark:text-surface-200 hover:bg-surface-50 dark:hover:bg-surface-700">{{ $t('employer_manage.title', 'Manage Jobs') }}</NuxtLink>
                 <button @click="logout" class="w-full text-left px-4 py-2 text-sm text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-900/20">{{ $t('nav.sign_out') }}</button>
               </div>
             </div>
@@ -127,8 +128,12 @@
                  <Icon name="lucide:plus" class="w-4 h-4" /> Post a Job
                </NuxtLink>
                
-               <NuxtLink :to="localePath('/employer/dashboard')" @click="mobileMenuOpen = false" class="w-full py-3 text-center font-medium text-surface-600 dark:text-surface-300 bg-surface-100 dark:bg-surface-800 rounded-xl border border-surface-200 dark:border-surface-700">
+               <NuxtLink :to="localePath('/employer/dashboard')" @click="mobileMenuOpen = false" class="w-full py-3 text-center font-medium text-surface-600 dark:text-surface-300 bg-surface-100 dark:bg-surface-800 rounded-xl border border-surface-200 dark:border-surface-700 block">
                  Dashboard
+               </NuxtLink>
+
+               <NuxtLink :to="localePath('/employer/manage-jobs')" @click="mobileMenuOpen = false" class="w-full py-3 text-center font-medium text-surface-600 dark:text-surface-300 bg-surface-100 dark:bg-surface-800 rounded-xl border border-surface-200 dark:border-surface-700 block">
+                 {{ $t('employer_manage.title', 'Manage Jobs') }}
                </NuxtLink>
 
                <button @click="handleLogout" class="w-full py-3 text-center font-medium text-rose-600 bg-rose-50 dark:bg-rose-900/10 rounded-xl border border-rose-100 dark:border-rose-900/20">

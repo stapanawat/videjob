@@ -4,7 +4,11 @@
       <main class="w-full space-y-8">
         <!-- Header -->
         <div class="flex items-center justify-between">
-          <h1 class="text-2xl font-bold text-surface-900 dark:text-white">Dashboard</h1>
+          <!-- Header Info -->
+          <div>
+            <h1 class="text-3xl font-bold text-surface-900 dark:text-white mb-2">{{ $t('employer_dashboard.title') }}</h1>
+            <p class="text-surface-600 dark:text-surface-400">Coffee & Co.</p>
+          </div>
         </div>
 
         <!-- Stats -->
@@ -51,30 +55,35 @@
                  <div class="flex-1 text-center md:text-left">
                    <h3 class="font-bold text-lg text-surface-900 dark:text-white">{{ applicant.name }}</h3>
                    <div class="flex items-center justify-center md:justify-start gap-3 mt-1 text-sm">
-                      <div class="flex items-center gap-1 text-amber-500">
-                        <span class="font-bold">{{ applicant.rating }}</span>
-                        <Icon name="lucide:star" class="w-4 h-4 fill-current" />
+                      <div class="flex items-center gap-3">
+                        <span class="flex items-center gap-1 text-amber-500 text-sm font-medium bg-amber-50 dark:bg-amber-900/20 px-2 py-0.5 rounded-md">
+                          <Icon name="lucide:star" class="w-4 h-4 fill-amber-500" />
+                          {{ applicant.rating }}
+                        </span>
+                        <span v-if="applicant.verified" class="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 text-xs font-medium px-2 py-0.5 rounded-md bg-emerald-50 dark:bg-emerald-900/20">
+                          <Icon name="lucide:shield-check" class="w-3.5 h-3.5" />
+                          {{ $t('employer_dashboard.status_verified') }}
+                        </span>
                       </div>
-                      <span class="text-surface-400">•</span>
-                      <span class="text-surface-500 dark:text-surface-400">{{ applicant.reviews }} reviews</span>
-                   </div>
-                   <div class="mt-2 flex flex-wrap justify-center md:justify-start gap-2">
-                     <span v-for="tag in applicant.tags" :key="tag" class="px-2 py-0.5 rounded-md bg-surface-100 dark:bg-surface-700 text-xs text-surface-600 dark:text-surface-300">
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-2 mt-3">
+                      <span v-for="tag in applicant.tags" :key="tag" class="text-xs font-medium text-surface-600 dark:text-surface-400 bg-surface-100 dark:bg-surface-700 px-2.5 py-1 rounded-md">
                         {{ tag }}
-                     </span>
-                   </div>
-                 </div>
+                      </span>
+                    </div>
+                  </div>
 
-                 <!-- Actions -->
-                 <div class="flex items-center gap-3 w-full md:w-auto">
-                    <button class="flex-1 md:flex-none px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 font-medium hover:bg-surface-50 dark:hover:bg-surface-700 transition-colors">
-                      Profile
-                    </button>
+                  <!-- Actions -->
+                  <div class="flex items-center gap-3 w-full md:w-auto">
+                    <NuxtLink :to="localePath(`/candidate/${applicant.id}`)" class="flex-1 text-center md:flex-none px-4 py-2 border border-surface-300 dark:border-surface-600 rounded-lg text-surface-700 dark:text-surface-300 font-medium hover:bg-surface-50 dark:hover:bg-surface-700 transition-colors">
+                      {{ $t('employer_dashboard.action_profile') }}
+                    </NuxtLink>
                     <button class="flex-1 md:flex-none px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium shadow-lg shadow-primary-500/20 active:scale-95 transition-all flex items-center justify-center gap-2">
                       <Icon name="lucide:calendar-check" class="w-4 h-4" />
-                      Make Appointment
+                      {{ $t('employer_dashboard.action_appointment') }}
                     </button>
-                 </div>
+                  </div>
                </div>
                
                <!-- Review Snippet -->
@@ -93,6 +102,8 @@
 </template>
 
 <script setup lang="ts">
+const localePath = useLocalePath()
+
 useSeoMeta({
   title: 'Employer Dashboard - PreJob'
 })

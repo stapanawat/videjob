@@ -49,47 +49,47 @@
         </div>
 
         <!-- Right Column: Abstract Visual -->
-        <div class="relative hidden lg:block h-[620px]">
+        <div class="relative block h-[500px] lg:h-[620px] mt-20 lg:mt-0">
            <div class="absolute inset-x-0 inset-y-10 bg-gradient-to-tr from-primary-500/20 to-accent-500/20 rounded-[4rem] rotate-3 backdrop-blur-3xl border border-white/10 dark:border-white/5"></div>
            <div class="absolute inset-y-0 inset-x-2 bg-white/40 dark:bg-white/5 rounded-[4rem] -rotate-2 backdrop-blur-md border border-white/30 dark:border-white/10 z-10 transition-all duration-700 shadow-2xl shadow-primary-900/10 dark:shadow-black/50">
               <!-- Grid/UI Mockup Overlay -->
               <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-30 dark:opacity-50 mix-blend-overlay pointer-events-none"></div>
               
               <!-- Card 1: Job Listing (Company Logo) -->
-              <div class="absolute top-16 left-12 right-8 bg-white/80 dark:bg-surface-800/80 backdrop-blur-xl p-5 rounded-3xl shadow-2xl border border-white/50 dark:border-surface-700/50 animate-fade-in-up transition-all hover:scale-[1.02] duration-500">
-                  <div class="flex items-center gap-4 mb-4">
-                      <div class="w-14 h-14 rounded-2xl overflow-hidden border border-surface-100 dark:border-surface-700 shadow-sm bg-surface-50">
+              <div class="absolute top-12 lg:top-16 left-8 lg:left-12 right-6 lg:right-8 bg-white/80 dark:bg-surface-800/80 backdrop-blur-xl p-4 lg:p-5 rounded-3xl shadow-2xl border border-white/50 dark:border-surface-700/50 animate-fade-in-up transition-all hover:scale-[1.02] duration-500">
+                  <div class="flex items-center gap-3 lg:gap-4 mb-3 lg:mb-4">
+                      <div class="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl overflow-hidden border border-surface-100 dark:border-surface-700 shadow-sm bg-surface-50">
                           <img src="https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=120&h=120" class="w-full h-full object-cover" alt="Company Logo" />
                       </div>
                       <div>
-                          <div class="font-bold text-surface-900 dark:text-white text-lg">Senior Frontend Dev</div>
-                          <div class="text-xs text-primary-600 dark:text-primary-400 font-semibold tracking-wide uppercase">Creative Studio • Bangkok</div>
+                          <div class="font-bold text-surface-900 dark:text-white text-base lg:text-lg">Senior Frontend Dev</div>
+                          <div class="text-[10px] lg:text-xs text-primary-600 dark:text-primary-400 font-semibold tracking-wide uppercase">Creative Studio • Bangkok</div>
                       </div>
                   </div>
                   <div class="space-y-2">
-                     <div class="h-2 bg-primary-500/10 dark:bg-surface-700 rounded-full w-4/5"></div>
-                     <div class="h-2 bg-primary-500/5 dark:bg-surface-700 rounded-full w-2/3"></div>
+                     <div class="h-1.5 lg:h-2 bg-primary-500/10 dark:bg-surface-700 rounded-full w-4/5"></div>
+                     <div class="h-1.5 lg:h-2 bg-primary-500/5 dark:bg-surface-700 rounded-full w-2/3"></div>
                   </div>
               </div>
 
                <!-- Card 2: Candidate Status -->
-              <div class="absolute bottom-24 right-4 left-20 bg-white/90 dark:bg-surface-800/90 backdrop-blur-xl p-5 rounded-3xl shadow-2xl border border-white/50 dark:border-surface-700/50 animate-fade-in-up animate-delay-300 z-30 transition-all hover:scale-[1.02] duration-500">
-                  <div class="flex items-center gap-4">
-                       <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-500 shadow-lg shadow-emerald-500/20">
+              <div class="absolute bottom-20 lg:bottom-24 right-4 left-12 lg:left-20 bg-white/90 dark:bg-surface-800/90 backdrop-blur-xl p-4 lg:p-5 rounded-3xl shadow-2xl border border-white/50 dark:border-surface-700/50 animate-fade-in-up animate-delay-300 z-30 transition-all hover:scale-[1.02] duration-500">
+                  <div class="flex items-center gap-3 lg:gap-4">
+                       <div class="w-10 h-10 lg:w-12 lg:h-12 rounded-full overflow-hidden border-2 border-emerald-500 shadow-lg shadow-emerald-500/20">
                             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=120&h=120" class="w-full h-full object-cover" alt="Candidate" />
                        </div>
                        <div>
-                           <div class="font-bold text-lg text-emerald-600 dark:text-emerald-400 leading-tight">Match Successful!</div>
-                           <div class="text-xs text-surface-500 dark:text-surface-400">98% Compatibility Found 🚀</div>
+                           <div class="font-bold text-base lg:text-lg text-emerald-600 dark:text-emerald-400 leading-tight">Match Successful!</div>
+                           <div class="text-[10px] lg:text-xs text-surface-500 dark:text-surface-400">98% Compatibility Found 🚀</div>
                        </div>
                   </div>
               </div>
 
                <!-- Card 3: New Match Progress -->
-               <div class="absolute top-[45%] -left-4 bg-white/95 dark:bg-surface-900/95 backdrop-blur-2xl p-4 rounded-3xl shadow-2xl border border-white/60 dark:border-surface-700/50 animate-fade-in-up animate-delay-500 z-50 hover:scale-[1.1] transition-all duration-500">
+               <div class="absolute top-1/2 -left-4 bg-white/95 dark:bg-surface-900/95 backdrop-blur-2xl p-3 lg:p-4 rounded-2xl lg:rounded-3xl shadow-2xl border border-white/60 dark:border-surface-700/50 animate-fade-in-up animate-delay-500 z-50 hover:scale-[1.1] transition-all duration-500">
                   <div class="flex flex-col items-center gap-1">
-                     <div class="text-[10px] font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest leading-none mb-1">Match</div>
-                     <div class="text-3xl font-black text-surface-900 dark:text-white">95%</div>
+                     <div class="text-[8px] lg:text-[10px] font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest leading-none mb-1">Match</div>
+                     <div class="text-2xl lg:text-3xl font-black text-surface-900 dark:text-white">95%</div>
                   </div>
                </div>
            </div>
